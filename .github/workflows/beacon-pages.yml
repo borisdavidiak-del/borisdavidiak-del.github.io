@@ -1,6 +1,7 @@
 name: Beacon project pages
 # Собирает тексты и галереи страниц проектов со старого сайта botu.su,
 # тонирует фото так же, как обложки, и коммитит в beacon/data и beacon/img/p.
+# Сами страницы собирает tools/build_pages.py из beacon/data/content.json.
 on:
   push:
     paths: ['tools/scrape_projects.py', '.github/workflows/beacon-pages.yml']
@@ -35,10 +36,6 @@ jobs:
                 -strip -interlace Plane -quality 82 "$out/$n.jpg" || true
             done
           done
-          # контактный лист для проверки
-          mkdir -p beacon/data/sheets
-          for d in beacon/img/p/*/; do slug=$(basename "$d"); ls "$d"*.jpg >/dev/null 2>&1 || continue
-            montage -label '%t' "$d"*.jpg -resize 300x300 -tile 6x -geometry +3+3 -pointsize 14 "beacon/data/sheets/$slug.jpg"; done
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
