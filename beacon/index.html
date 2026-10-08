@@ -60,7 +60,7 @@ section{padding:clamp(72px,10vw,140px) var(--pad)}
 .filters button:hover{color:var(--fg)}
 .filters button[aria-pressed=true]:hover{color:var(--bg)}
 /* grid: мозаика из крупных карточек */
-.grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:clamp(220px,21vw,400px);gap:clamp(10px,1.2vw,18px)}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:clamp(220px,20vw,440px);gap:clamp(10px,1.2vw,18px)}
 .card{position:relative;overflow:hidden;background:#07080e;text-decoration:none;isolation:isolate;border-radius:4px;grid-column:var(--c);grid-row:var(--r)}
 .grid.flat .card{grid-column:span 6;grid-row:span 2}
 .grid.flat .card.last{grid-column:span 12}
@@ -81,6 +81,7 @@ section{padding:clamp(72px,10vw,140px) var(--pad)}
 .card h3{font-family:Unbounded;font-weight:500;font-size:clamp(17px,1.5vw,24px);line-height:1.2;margin:0;color:var(--fg);max-width:22ch}
 .card.xl h3,.card.w h3{font-size:clamp(22px,2.6vw,44px);font-weight:800;text-transform:uppercase;max-width:18ch}
 .card.m h3{font-size:clamp(20px,2vw,32px)}
+.card.s h3{font-size:clamp(18px,1.7vw,28px)}
 .card p{margin:0;color:#d4d2cb;font-size:14px;max-width:52ch;max-height:0;opacity:0;overflow:hidden;transition:max-height .6s cubic-bezier(.16,1,.3,1),opacity .4s}
 .card:hover p,.card:focus-visible p{max-height:8em;opacity:1}
 .card .go{display:inline-flex;align-items:center;gap:8px;color:var(--acc);opacity:0;transform:translateX(-8px);transition:.4s}
@@ -194,13 +195,12 @@ const P=[
 ];
 const grid=document.getElementById('grid');
 // раскладка мозаики блоками по две строки:
-// A: большая слева + две малые справа, B: две средние, C: две малые слева + большая справа
-const BLOCKS={A:[['xl','1/span 8',0,2],['s','9/span 4',0,1],['s','9/span 4',1,1]],
+// A: большая на половину слева + две друг над другом справа, C: зеркально, B: две рядом
+const BLOCKS={A:[['xl','1/span 6',0,2],['s','7/span 6',0,1],['s','7/span 6',1,1]],
  B:[['m','1/span 6',0,2],['m','7/span 6',0,2]],
- C:[['s','1/span 4',0,1],['s','1/span 4',1,1],['xl','5/span 8',0,2]],
- D:[['w','1/span 12',0,2]]};
+ C:[['s','1/span 6',0,1],['s','1/span 6',1,1],['xl','7/span 6',0,2]]};
 const SLOTS=[];let row=1;
-for(const k of 'ABCABCDDD'){for(const [size,c,dr,h] of BLOCKS[k])SLOTS.push({size,c,r:`${row+dr}/span ${h}`});row+=2}
+for(const k of 'ACACAB'){for(const [size,c,dr,h] of BLOCKS[k])SLOTS.push({size,c,r:`${row+dr}/span ${h}`});row+=2}
 P.forEach(([slug,t,cat,d],i)=>{
  const h=(i*47+20)%360;
  const slot=SLOTS[i],size=slot.size;
