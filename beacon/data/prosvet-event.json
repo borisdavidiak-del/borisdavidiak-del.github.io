@@ -1,0 +1,74 @@
+{
+ "slug": "prosvet-event",
+ "title": "Prosvet event",
+ "description": "Первое образовательное событие в Крыму о сценическом свете: теория, практика, визуализация и сопровождение",
+ "og": "https://static.tildacdn.com/tild3430-6633-4463-b633-393435376433/Valena-94.jpg",
+ "texts": [
+  {
+   "cls": "t-title t-title_xs",
+   "t": "МАЯК ВСЕЛЕННОЙ\nмультимедиа студия"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Описание"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Первое образовательное мероприятие в Крыму, посвящённое искусству работы со светом на мероприятиях. Погрузили участников лектория в изучение типов световых приборов, их базовых принципов работы и созданию рабочих сетапов.\n\nВ рамках проекта выступили в роли разработчиков визуализации и светового оформления, а также предоставляли экспертное сопровождение на всех этапах реализации. Сценический дизайн Prosvet event"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Соцсети"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "media design studio © 2025"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Контакты"
+  }
+ ],
+ "images": [
+  {
+   "url": "https://static.tildacdn.com/tild3430-6633-4463-b633-393435376433/Valena-94.jpg",
+   "file": "/tmp/beacon-src/prosvet-event/00.jpg"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-polyfill-1.0.min.js",
+   "file": "/tmp/beacon-src/prosvet-event/01.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/jquery-1.10.2.min.js",
+   "file": "/tmp/beacon-src/prosvet-event/02.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-scripts-3.0.min.js",
+   "file": "/tmp/beacon-src/prosvet-event/03.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/ws/project11963115/tilda-blocks-page62484383.min.js?t=1789985318",
+   "file": "/tmp/beacon-src/prosvet-event/04.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-lazyload-1.0.min.js",
+   "file": "/tmp/beacon-src/prosvet-event/05.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-zero-1.2.min.js",
+   "file": "/tmp/beacon-src/prosvet-event/06.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-menu-widgeticons-1.0.min.js",
+   "file": "/tmp/beacon-src/prosvet-event/07.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-zero-scale-1.0.min.js",
+   "file": "/tmp/beacon-src/prosvet-event/08.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-events-1.0.min.js",
+   "file": "/tmp/beacon-src/prosvet-event/09.js"
+  }
+ ]
+}

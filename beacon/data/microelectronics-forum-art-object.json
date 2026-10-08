@@ -1,0 +1,74 @@
+{
+ "slug": "microelectronics-forum-art-object",
+ "title": "Форум Микроэлектроника 2024 арт-объект",
+ "description": "Человек с крыльями из микросхем, пульсирующими энергией, олицетворяет единство гения и технологий",
+ "og": "https://static.tildacdn.com/tild3232-6162-4762-a137-346637313539/13_57_22.jpg",
+ "texts": [
+  {
+   "cls": "t-title t-title_xs",
+   "t": "МАЯК ВСЕЛЕННОЙ\nмультимедиа студия"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "В центре композиции — человек, вдохновленный своей идеей, словно окрыленный ею. За его спиной прорастают крылья, сотканные из тончайших микросхем, чьи изящные линии и переплетения устремляются ввысь. Эти потоки, подобно живым сосудам, сливаются в единую, величественную микросхему, которая становится сердцем всей конструкции.\n\nГлавный чип, пульсирующий энергией, символизирует единство мысли и технологий, воплощая гармонию человеческого гения и прогресса. Реализация Задача Создать арт-объект, воплощающий идею форума и служащий фотозоной. Инсталляция Форум Микроэлектроника 2024 арт-объект"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Соцсети"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "media design studio © 2025"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Контакты"
+  }
+ ],
+ "images": [
+  {
+   "url": "https://static.tildacdn.com/tild3232-6162-4762-a137-346637313539/13_57_22.jpg",
+   "file": "/tmp/beacon-src/microelectronics-forum-art-object/00.jpg"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-polyfill-1.0.min.js",
+   "file": "/tmp/beacon-src/microelectronics-forum-art-object/01.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/jquery-1.10.2.min.js",
+   "file": "/tmp/beacon-src/microelectronics-forum-art-object/02.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-scripts-3.0.min.js",
+   "file": "/tmp/beacon-src/microelectronics-forum-art-object/03.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/ws/project11963115/tilda-blocks-page62440601.min.js?t=1789985299",
+   "file": "/tmp/beacon-src/microelectronics-forum-art-object/04.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-lazyload-1.0.min.js",
+   "file": "/tmp/beacon-src/microelectronics-forum-art-object/05.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-animation-2.0.min.js",
+   "file": "/tmp/beacon-src/microelectronics-forum-art-object/06.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-zero-1.2.min.js",
+   "file": "/tmp/beacon-src/microelectronics-forum-art-object/07.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-menu-widgeticons-1.0.min.js",
+   "file": "/tmp/beacon-src/microelectronics-forum-art-object/08.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-zero-scale-1.0.min.js",
+   "file": "/tmp/beacon-src/microelectronics-forum-art-object/09.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-events-1.0.min.js",
+   "file": "/tmp/beacon-src/microelectronics-forum-art-object/10.js"
+  }
+ ]
+}

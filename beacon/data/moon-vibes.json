@@ -1,0 +1,74 @@
+{
+ "slug": "moon-vibes",
+ "title": "Moon Vibes",
+ "description": "Фестиваль электронной музыки в стиле сюрреализма",
+ "og": "https://static.tildacdn.com/tild3832-6563-4662-b537-366562636564/photo_2024-11-02_20-.jpg",
+ "texts": [
+  {
+   "cls": "t-title t-title_xs",
+   "t": "МАЯК ВСЕЛЕННОЙ\nмультимедиа студия"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Центром композиции стал огромный круглый экран и длинный стол, словно дверной глазок, заглядывая в который, пытаешься разгадать тайну этой или иной реальности.\n\nДва экрана, обращённые друг к другу под углом, подобны двум картинам, через которые Дали мог бы вести диалог со своими творениями. Между ними диджей, словно медиум, направлял этот разговор, используя музыку как язык общения.\n\nПространство зала наполнили подвешенные двери, парящие в воздухе, словно порталы между мирами. Через одни проемы протянулись световые линии, а из других лился контент, создавая диалог между реальностью и воображением. Решение Концепция от клиента — фестиваль электронной музыки в стиле сюрреализма Создать пространство, где гости выйдут за пределы реальности, погрузятся в сны, фантазии и мысли, рождающиеся в глубинах подсознания. Сценический дизайн Moon Vibes t_onFuncLoad('t396_initialScale',function() {t396_initialScale('859552419');});t_onReady(function() {t_onFuncLoad('t396_init',function() {t396_init('859552419');});});"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Соцсети"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "media design studio © 2025"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Контакты"
+  }
+ ],
+ "images": [
+  {
+   "url": "https://static.tildacdn.com/tild3832-6563-4662-b537-366562636564/photo_2024-11-02_20-.jpg",
+   "file": "/tmp/beacon-src/moon-vibes/00.jpg"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-polyfill-1.0.min.js",
+   "file": "/tmp/beacon-src/moon-vibes/01.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/jquery-1.10.2.min.js",
+   "file": "/tmp/beacon-src/moon-vibes/02.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-scripts-3.0.min.js",
+   "file": "/tmp/beacon-src/moon-vibes/03.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/ws/project11963115/tilda-blocks-page62404807.min.js?t=1789985252",
+   "file": "/tmp/beacon-src/moon-vibes/04.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-lazyload-1.0.min.js",
+   "file": "/tmp/beacon-src/moon-vibes/05.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-animation-2.0.min.js",
+   "file": "/tmp/beacon-src/moon-vibes/06.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-zero-1.2.min.js",
+   "file": "/tmp/beacon-src/moon-vibes/07.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-menu-widgeticons-1.0.min.js",
+   "file": "/tmp/beacon-src/moon-vibes/08.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-zero-scale-1.0.min.js",
+   "file": "/tmp/beacon-src/moon-vibes/09.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-events-1.0.min.js",
+   "file": "/tmp/beacon-src/moon-vibes/10.js"
+  }
+ ]
+}

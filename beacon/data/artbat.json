@@ -1,0 +1,82 @@
+{
+ "slug": "artbat",
+ "title": "Artbat. Ангар аэропорта",
+ "description": "Фестиваль в аэропорту с турбиной самолёта в центре преобразил ангар в пространство технологий, олицетворяющее движение и прогресс",
+ "og": "https://static.tildacdn.com/tild3362-3761-4465-a162-653066653964/10_30_17.jpg",
+ "texts": [
+  {
+   "cls": "t-title t-title_xs",
+   "t": "МАЯК ВСЕЛЕННОЙ\nмультимедиа студия"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Электронный фестиваль, развернувшийся на территории действующего аэропорта, занял один из его ангаров, превратив его в пространство современных технологий. Центральным символом, олицетворяющим движение и прогресс, стала турбина самолета. Ее мощь и динамика были воплощены в сценических элементах, которые стали сердцем фестиваля."
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Описание"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Сценический дизайн"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Artbat. Ангар аэропорта"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Соцсети"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "media design studio © 2025"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Контакты"
+  }
+ ],
+ "images": [
+  {
+   "url": "https://static.tildacdn.com/tild3362-3761-4465-a162-653066653964/10_30_17.jpg",
+   "file": "/tmp/beacon-src/artbat/00.jpg"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-polyfill-1.0.min.js",
+   "file": "/tmp/beacon-src/artbat/01.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/jquery-1.10.2.min.js",
+   "file": "/tmp/beacon-src/artbat/02.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-scripts-3.0.min.js",
+   "file": "/tmp/beacon-src/artbat/03.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/ws/project11963115/tilda-blocks-page62532413.min.js?t=1789985354",
+   "file": "/tmp/beacon-src/artbat/04.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-lazyload-1.0.min.js",
+   "file": "/tmp/beacon-src/artbat/05.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-zero-1.2.min.js",
+   "file": "/tmp/beacon-src/artbat/06.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-menu-widgeticons-1.0.min.js",
+   "file": "/tmp/beacon-src/artbat/07.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-zero-scale-1.0.min.js",
+   "file": "/tmp/beacon-src/artbat/08.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-events-1.0.min.js",
+   "file": "/tmp/beacon-src/artbat/09.js"
+  }
+ ]
+}

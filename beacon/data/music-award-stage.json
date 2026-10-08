@@ -1,0 +1,70 @@
+{
+ "slug": "music-award-stage",
+ "title": "Сцена для музыкальной премии",
+ "description": "Трансформируемая сцена с движущимися элементами и вращающимися экранами создаёт динамику и подчёркивает уникальность каждого номера",
+ "og": "https://static.tildacdn.com/tild6239-3765-4163-b631-356561366537/15_32_52.jpg",
+ "texts": [
+  {
+   "cls": "t-title t-title_xs",
+   "t": "МАЯК ВСЕЛЕННОЙ\nмультимедиа студия"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Сцена разделена на две части. Первая — центральный объект, элементы которого движутся в пространстве, подчиняясь вертикальным и горизонтальным осям.\nВторая — задняя стенка, где блоки экранов вращаются вокруг своей оси, открывая световое оборудование и артистов, скрытых за ними.\n\nКаждый элемент сцены становится частью живого механизма, создающего динамичный визуальный ряд, который подчеркивает уникальность каждого выступления. Реализация Задача Сцена для музыкальной премии, способная трансформироваться под различные номера. Сценический дизайн Сцена для музыкальной премии"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Соцсети"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "media design studio © 2025"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Контакты"
+  }
+ ],
+ "images": [
+  {
+   "url": "https://static.tildacdn.com/tild6239-3765-4163-b631-356561366537/15_32_52.jpg",
+   "file": "/tmp/beacon-src/music-award-stage/00.jpg"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-polyfill-1.0.min.js",
+   "file": "/tmp/beacon-src/music-award-stage/01.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/jquery-1.10.2.min.js",
+   "file": "/tmp/beacon-src/music-award-stage/02.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-scripts-3.0.min.js",
+   "file": "/tmp/beacon-src/music-award-stage/03.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/ws/project11963115/tilda-blocks-page62485785.min.js?t=1789985328",
+   "file": "/tmp/beacon-src/music-award-stage/04.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-lazyload-1.0.min.js",
+   "file": "/tmp/beacon-src/music-award-stage/05.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-zero-1.2.min.js",
+   "file": "/tmp/beacon-src/music-award-stage/06.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-menu-widgeticons-1.0.min.js",
+   "file": "/tmp/beacon-src/music-award-stage/07.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-zero-scale-1.0.min.js",
+   "file": "/tmp/beacon-src/music-award-stage/08.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-events-1.0.min.js",
+   "file": "/tmp/beacon-src/music-award-stage/09.js"
+  }
+ ]
+}

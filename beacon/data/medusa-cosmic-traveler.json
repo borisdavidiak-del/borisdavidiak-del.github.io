@@ -1,0 +1,70 @@
+{
+ "slug": "medusa-cosmic-traveler",
+ "title": "Медуза. Космический странник",
+ "description": "Инсталляция переносит в мир космических странников, унося в невесомость, где границы реальности исчезают, растворяясь в бесконечности мечты и пространства",
+ "og": "https://static.tildacdn.com/tild3039-6666-4433-b366-643232386662/23_29_09.jpg",
+ "texts": [
+  {
+   "cls": "t-title t-title_xs",
+   "t": "МАЯК ВСЕЛЕННОЙ\nмультимедиа студия"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Данная инсталляция посвящена космическим странникам, погружаясь в которую, ты отправляешься в путешествие вместе с ними.\n\nОказавшись подвешенным в воздухе, ты попадаешь в мир невесомости, где невидимые потоки уносят тебя в бескрайние просторы пространства, растворяя границы между реальностью и мечтой. Описание Инсталляции\nКонцепт Инсталляция Медуза. Космический странник"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Соцсети"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "media design studio © 2025"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Контакты"
+  }
+ ],
+ "images": [
+  {
+   "url": "https://static.tildacdn.com/tild3039-6666-4433-b366-643232386662/23_29_09.jpg",
+   "file": "/tmp/beacon-src/medusa-cosmic-traveler/00.jpg"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-polyfill-1.0.min.js",
+   "file": "/tmp/beacon-src/medusa-cosmic-traveler/01.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/jquery-1.10.2.min.js",
+   "file": "/tmp/beacon-src/medusa-cosmic-traveler/02.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-scripts-3.0.min.js",
+   "file": "/tmp/beacon-src/medusa-cosmic-traveler/03.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/ws/project11963115/tilda-blocks-page62529439.min.js?t=1789985346",
+   "file": "/tmp/beacon-src/medusa-cosmic-traveler/04.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-lazyload-1.0.min.js",
+   "file": "/tmp/beacon-src/medusa-cosmic-traveler/05.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-zero-1.2.min.js",
+   "file": "/tmp/beacon-src/medusa-cosmic-traveler/06.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-menu-widgeticons-1.0.min.js",
+   "file": "/tmp/beacon-src/medusa-cosmic-traveler/07.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-zero-scale-1.0.min.js",
+   "file": "/tmp/beacon-src/medusa-cosmic-traveler/08.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-events-1.0.min.js",
+   "file": "/tmp/beacon-src/medusa-cosmic-traveler/09.js"
+  }
+ ]
+}

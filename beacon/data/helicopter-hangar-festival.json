@@ -1,0 +1,74 @@
+{
+ "slug": "helicopter-hangar-festival",
+ "title": "Вертолетный ангар. Фестиваль",
+ "description": "Фестиваль электронной музыки в ангаре превращает вертолётные элементы в световые инсталляции, а сцену—в винт, где DJ управляет вихрем звука и света.",
+ "og": "https://static.tildacdn.com/tild3739-6565-4637-b931-313330373261/16_44_38.jpg",
+ "texts": [
+  {
+   "cls": "t-title t-title_xs",
+   "t": "МАЯК ВСЕЛЕННОЙ\nмультимедиа студия"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Фестиваль электронной музыки, разворачивающийся в ангаре для вертолетов, переносит зрителей в мир футуристической фантазии, где элементы вертолетов трансформируются в самостоятельные световые инсталляции. Сцена, воплощенная в форме окружности винта, становится центром вселенной: световые лучи, словно лопасти, рассекают пространство, а DJ, словно пилот, управляет этим вихрем звука и света.\n\nВ центре зала возвышается конструкция, напоминающая хвостовой винт вертолета, — она пульсирует в ритме музыки, превращаясь в гигантский арт-объект. Каждый элемент антуража оживает, создавая атмосферу, где технология и искусство сливаются в единый поток энергии. Описание Сценический дизайн Вертолетный ангар. Фестиваль"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Соцсети"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "media design studio © 2025"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Контакты"
+  }
+ ],
+ "images": [
+  {
+   "url": "https://static.tildacdn.com/tild3739-6565-4637-b931-313330373261/16_44_38.jpg",
+   "file": "/tmp/beacon-src/helicopter-hangar-festival/00.jpg"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-polyfill-1.0.min.js",
+   "file": "/tmp/beacon-src/helicopter-hangar-festival/01.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/jquery-1.10.2.min.js",
+   "file": "/tmp/beacon-src/helicopter-hangar-festival/02.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-scripts-3.0.min.js",
+   "file": "/tmp/beacon-src/helicopter-hangar-festival/03.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/ws/project11963115/tilda-blocks-page62486297.min.js?t=1789985361",
+   "file": "/tmp/beacon-src/helicopter-hangar-festival/04.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-lazyload-1.0.min.js",
+   "file": "/tmp/beacon-src/helicopter-hangar-festival/05.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-animation-2.0.min.js",
+   "file": "/tmp/beacon-src/helicopter-hangar-festival/06.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-zero-1.2.min.js",
+   "file": "/tmp/beacon-src/helicopter-hangar-festival/07.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-menu-widgeticons-1.0.min.js",
+   "file": "/tmp/beacon-src/helicopter-hangar-festival/08.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-zero-scale-1.0.min.js",
+   "file": "/tmp/beacon-src/helicopter-hangar-festival/09.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-events-1.0.min.js",
+   "file": "/tmp/beacon-src/helicopter-hangar-festival/10.js"
+  }
+ ]
+}

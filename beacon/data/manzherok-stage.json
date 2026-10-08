@@ -1,0 +1,102 @@
+{
+ "slug": "manzherok-stage",
+ "title": "Манжерок. Многофункциональная сцена",
+ "description": "Пространство объединяет эстетику ВК «Манжерок», панорамные виды и гибкость, превращая озеро в театр под открытым небом",
+ "og": "https://static.tildacdn.com/tild3264-3036-4336-a131-383931316263/23_59_54.jpg",
+ "texts": [
+  {
+   "cls": "t-title t-title_xs",
+   "t": "МАЯК ВСЕЛЕННОЙ\nмультимедиа студия"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Ключевые принципы, заложенные в разработке многофункционального пространства"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Гибкость в сценографии: от камерных постановок до масштабных фестивалей, адаптируясь под любые творческие задачи."
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Уникальный арт-объект, сочетающий функциональность и эстетику, вписанный в природный контекст."
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Открытость пространства, сохраняющая панорамные виды и обеспечивающая высокую видимость объекта."
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Многофункциональность: помимо роли пирса, служит зоной отдыха и сценической площадкой, размещённой на подготовленной насыпной платформе в озере, превращая водное пространство в театр под открытым небом."
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Воспроизведение ключевых форм и материалов ВК «Манжерок», создающее гармоничную связь с окружающим ландшафтом."
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Инсталляция"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Манжерок. Многофункциональная сцена"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Соцсети"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "media design studio © 2025"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Контакты"
+  }
+ ],
+ "images": [
+  {
+   "url": "https://static.tildacdn.com/tild3264-3036-4336-a131-383931316263/23_59_54.jpg",
+   "file": "/tmp/beacon-src/manzherok-stage/00.jpg"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-polyfill-1.0.min.js",
+   "file": "/tmp/beacon-src/manzherok-stage/01.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/jquery-1.10.2.min.js",
+   "file": "/tmp/beacon-src/manzherok-stage/02.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-scripts-3.0.min.js",
+   "file": "/tmp/beacon-src/manzherok-stage/03.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/ws/project11963115/tilda-blocks-page62441391.min.js?t=1789985305",
+   "file": "/tmp/beacon-src/manzherok-stage/04.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-lazyload-1.0.min.js",
+   "file": "/tmp/beacon-src/manzherok-stage/05.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-animation-2.0.min.js",
+   "file": "/tmp/beacon-src/manzherok-stage/06.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-zero-1.2.min.js",
+   "file": "/tmp/beacon-src/manzherok-stage/07.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-menu-widgeticons-1.0.min.js",
+   "file": "/tmp/beacon-src/manzherok-stage/08.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-zero-scale-1.0.min.js",
+   "file": "/tmp/beacon-src/manzherok-stage/09.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-events-1.0.min.js",
+   "file": "/tmp/beacon-src/manzherok-stage/10.js"
+  }
+ ]
+}

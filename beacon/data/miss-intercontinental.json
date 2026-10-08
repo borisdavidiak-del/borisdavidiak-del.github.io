@@ -1,0 +1,90 @@
+{
+ "slug": "miss-intercontinental",
+ "title": "Мисс Интерконтиненталь",
+ "description": "Показать через простые формы сцены единство и при этом индивидуальность каждой участницы.",
+ "og": "https://static.tildacdn.com/tild6362-3164-4932-b734-373164313231/Mriya_Asia_Party_202.jpg",
+ "texts": [
+  {
+   "cls": "t-title t-title_xs",
+   "t": "МАЯК ВСЕЛЕННОЙ\nмультимедиа студия"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Широкие экраны по бокам, наполненные глубоким смыслом в контенте, и участница в центре, которая объединяет и воплощает эти смыслы в себе, становясь их живым воплощением."
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Решение"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Концепция от клиента:"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Показать через простые формы сцены единство и при этом индивидуальность каждой участницы."
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Сценический дизайн"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Мисс Интерконтиненталь"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Соцсети"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "media design studio © 2025"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Контакты"
+  }
+ ],
+ "images": [
+  {
+   "url": "https://static.tildacdn.com/tild6362-3164-4932-b734-373164313231/Mriya_Asia_Party_202.jpg",
+   "file": "/tmp/beacon-src/miss-intercontinental/00.jpg"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-polyfill-1.0.min.js",
+   "file": "/tmp/beacon-src/miss-intercontinental/01.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/jquery-1.10.2.min.js",
+   "file": "/tmp/beacon-src/miss-intercontinental/02.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-scripts-3.0.min.js",
+   "file": "/tmp/beacon-src/miss-intercontinental/03.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/ws/project11963115/tilda-blocks-page62406049.min.js?t=1789985283",
+   "file": "/tmp/beacon-src/miss-intercontinental/04.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-lazyload-1.0.min.js",
+   "file": "/tmp/beacon-src/miss-intercontinental/05.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-zero-1.2.min.js",
+   "file": "/tmp/beacon-src/miss-intercontinental/06.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-menu-widgeticons-1.0.min.js",
+   "file": "/tmp/beacon-src/miss-intercontinental/07.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-zero-scale-1.0.min.js",
+   "file": "/tmp/beacon-src/miss-intercontinental/08.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-events-1.0.min.js",
+   "file": "/tmp/beacon-src/miss-intercontinental/09.js"
+  }
+ ]
+}

@@ -1,0 +1,94 @@
+{
+ "slug": "novemberfest",
+ "title": "Ноябрьфест",
+ "description": "Фестиваль еды и вина с прозрачной сценой на фоне виноградника, неоновой эстетикой и логотипом, гармонично вписанным в пейзаж",
+ "og": "https://static.tildacdn.com/tild6635-6466-4837-a564-363930656331/IMG_5539-772.jpg",
+ "texts": [
+  {
+   "cls": "t-title t-title_xs",
+   "t": "МАЯК ВСЕЛЕННОЙ\nмультимедиа студия"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Логотип фестиваля становится центральным элементом сцены, гармонично вписанным в панораму виноградника. Его формы перекликаются с природными линиями, создавая единый художественный образ. Боковые пространства заполнены элементами вывесок в стиле неона, вдохновленными элементами индустрии, которые подчеркивают атмосферу праздника, не нарушая его эстетической целостности."
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Реализация"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Задача: фестиваль еды и вина."
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Прозрачная сцена, возвышающаяся на фоне живописного виноградника, лишена навязчивых баннеров, сохраняя чистоту и естественность пейзажа. Основная часть мероприятия разворачивается днем, с возможным выступлением хедлайнера в темное время суток, завершая фестиваль ярким акцентом."
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Сценический дизайн"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Ноябрьфест"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Соцсети"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "media design studio © 2025"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Контакты"
+  }
+ ],
+ "images": [
+  {
+   "url": "https://static.tildacdn.com/tild6635-6466-4837-a564-363930656331/IMG_5539-772.jpg",
+   "file": "/tmp/beacon-src/novemberfest/00.jpg"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-polyfill-1.0.min.js",
+   "file": "/tmp/beacon-src/novemberfest/01.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/jquery-1.10.2.min.js",
+   "file": "/tmp/beacon-src/novemberfest/02.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-scripts-3.0.min.js",
+   "file": "/tmp/beacon-src/novemberfest/03.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/ws/project11963115/tilda-blocks-page62535729.min.js?t=1789985265",
+   "file": "/tmp/beacon-src/novemberfest/04.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-lazyload-1.0.min.js",
+   "file": "/tmp/beacon-src/novemberfest/05.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-animation-2.0.min.js",
+   "file": "/tmp/beacon-src/novemberfest/06.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-zero-1.2.min.js",
+   "file": "/tmp/beacon-src/novemberfest/07.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-menu-widgeticons-1.0.min.js",
+   "file": "/tmp/beacon-src/novemberfest/08.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-zero-scale-1.0.min.js",
+   "file": "/tmp/beacon-src/novemberfest/09.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-events-1.0.min.js",
+   "file": "/tmp/beacon-src/novemberfest/10.js"
+  }
+ ]
+}

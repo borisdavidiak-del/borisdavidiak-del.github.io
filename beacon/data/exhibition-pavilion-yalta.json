@@ -1,0 +1,78 @@
+{
+ "slug": "exhibition-pavilion-yalta",
+ "title": "Вертолетный ангар. Фестиваль",
+ "description": "Концепция отдельного быстровозводимого павильона для города Ялты на Всемирный Фестиваль Молодежи",
+ "og": "https://static.tildacdn.com/tild3036-6264-4461-b833-613165643931/1_4.jpg",
+ "texts": [
+  {
+   "cls": "t-title t-title_xs",
+   "t": "МАЯК ВСЕЛЕННОЙ\nмультимедиа студия"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "На этажах расположены:"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Решение"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Павильон внешне воплощает собирательный образ дворцов Ялты. Войдя внутрь, гость оказывается в оранжерее, вдохновленной Никитским ботаническим садом. Здесь всё, как в Ялте: буйство зелени, обилие солнечного света и величие архитектурного наследия. Лестницы и вторые этажи символизируют расположение города на горных склонах, а также многочисленные видовые площадки, открывающие панорамы, знакомые каждому гостю Ялты.\n\nЭти элементы также функциональны, увеличивая рабочее пространство павильона, сохраняя при этом дух города. Главная сцена Сцена универсальна: для выступлений спикеров, танцевальных батлов, командных соревнований и концертов. Летние ночи с музыкой до рассвета — яркие воспоминания гостей Ялты. Концепция отдельного быстровозводимого павильона для города Ялты на Всемирный Фестиваль Молодежи Концепция Библиотека с произведениями, созданными в Крыму или о Крыме, включая современных авторов. Летнее кафе с разнообразием крымской кухни и, конечно, крымским мороженым —\nобязательным атрибутом курортного отдыха. Картинная галерея с работами, написанными в Крыму. Сценический дизайн\nИнсталляция Выставочный павильон Ялта t_onFuncLoad('t396_initialScale',function() {t396_initialScale('860160263');});t_onReady(function() {t_onFuncLoad('t396_init',function() {t396_init('860160263');});});"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Соцсети"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "media design studio © 2025"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Контакты"
+  }
+ ],
+ "images": [
+  {
+   "url": "https://static.tildacdn.com/tild3036-6264-4461-b833-613165643931/1_4.jpg",
+   "file": "/tmp/beacon-src/exhibition-pavilion-yalta/00.jpg"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-polyfill-1.0.min.js",
+   "file": "/tmp/beacon-src/exhibition-pavilion-yalta/01.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/jquery-1.10.2.min.js",
+   "file": "/tmp/beacon-src/exhibition-pavilion-yalta/02.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-scripts-3.0.min.js",
+   "file": "/tmp/beacon-src/exhibition-pavilion-yalta/03.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/ws/project11963115/tilda-blocks-page62486645.min.js?t=1789985368",
+   "file": "/tmp/beacon-src/exhibition-pavilion-yalta/04.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-lazyload-1.0.min.js",
+   "file": "/tmp/beacon-src/exhibition-pavilion-yalta/05.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-zero-1.2.min.js",
+   "file": "/tmp/beacon-src/exhibition-pavilion-yalta/06.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-menu-widgeticons-1.0.min.js",
+   "file": "/tmp/beacon-src/exhibition-pavilion-yalta/07.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-zero-scale-1.0.min.js",
+   "file": "/tmp/beacon-src/exhibition-pavilion-yalta/08.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-events-1.0.min.js",
+   "file": "/tmp/beacon-src/exhibition-pavilion-yalta/09.js"
+  }
+ ]
+}

@@ -1,0 +1,74 @@
+{
+ "slug": "crazy-asia-in-mriya",
+ "title": "CRAZY ASIA in MRIYA",
+ "description": "Японский квартал, погружённый в ночную тьму",
+ "og": "https://static.tildacdn.com/tild6362-3164-4932-b734-373164313231/Mriya_Asia_Party_202.jpg",
+ "texts": [
+  {
+   "cls": "t-title t-title_xs",
+   "t": "МАЯК ВСЕЛЕННОЙ\nмультимедиа студия"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Передать глубину пространства, расположив вывески на разных уровнях — от низких витрин до высоких крыш, создавая иллюзию бесконечности.\n\nВписать диджея и артистов в этот сетап, стилизованный под эстетику аниме, где они становятся частью городского пейзажа, словно герои, вышедшие из кадра анимации. Решение Концепция от клиента: Японский квартал, погружённый в ночную тьму, где улицы оживают под мерцанием бесчисленных неоновых вывесок, создающих калейдоскоп света и цвета. Сценический дизайн CRAZY ASIA in MRIYA"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Соцсети"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "media design studio © 2025"
+  },
+  {
+   "cls": "tn-atom",
+   "t": "Контакты"
+  }
+ ],
+ "images": [
+  {
+   "url": "https://static.tildacdn.com/tild6362-3164-4932-b734-373164313231/Mriya_Asia_Party_202.jpg",
+   "file": "/tmp/beacon-src/crazy-asia-in-mriya/00.jpg"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-polyfill-1.0.min.js",
+   "file": "/tmp/beacon-src/crazy-asia-in-mriya/01.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/jquery-1.10.2.min.js",
+   "file": "/tmp/beacon-src/crazy-asia-in-mriya/02.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-scripts-3.0.min.js",
+   "file": "/tmp/beacon-src/crazy-asia-in-mriya/03.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/ws/project11963115/tilda-blocks-page62405217.min.js?t=1789985271",
+   "file": "/tmp/beacon-src/crazy-asia-in-mriya/04.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-lazyload-1.0.min.js",
+   "file": "/tmp/beacon-src/crazy-asia-in-mriya/05.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-animation-2.0.min.js",
+   "file": "/tmp/beacon-src/crazy-asia-in-mriya/06.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-zero-1.2.min.js",
+   "file": "/tmp/beacon-src/crazy-asia-in-mriya/07.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-menu-widgeticons-1.0.min.js",
+   "file": "/tmp/beacon-src/crazy-asia-in-mriya/08.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-zero-scale-1.0.min.js",
+   "file": "/tmp/beacon-src/crazy-asia-in-mriya/09.js"
+  },
+  {
+   "url": "https://static.tildacdn.com/js/tilda-events-1.0.min.js",
+   "file": "/tmp/beacon-src/crazy-asia-in-mriya/10.js"
+  }
+ ]
+}
