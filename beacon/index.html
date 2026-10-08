@@ -30,13 +30,10 @@ nav a:hover{color:var(--acc)}
 @media(max-width:760px){nav ul{display:none}}
 /* hero */
 .hero{min-height:100svh;display:grid;align-content:center;padding:96px var(--pad) 64px;position:relative;overflow:hidden}
-.beam{position:absolute;top:28%;left:86%;width:180vmax;height:60vmax;transform-origin:0 50%;
- background:conic-gradient(from 84deg at 0 50%,transparent 0deg,rgba(255,184,28,.16) 6deg,rgba(255,184,28,.03) 12deg,transparent 14deg);
- animation:sweep 14s linear infinite;pointer-events:none;margin-top:-30vmax}
-.lamp{position:absolute;top:28%;left:86%;width:14px;height:14px;margin:-7px;border-radius:50%;background:var(--acc);box-shadow:0 0 30px 8px rgba(255,184,28,.6),0 0 120px 40px rgba(255,184,28,.2)}
-@keyframes sweep{to{transform:rotate(360deg)}}
-@media(max-width:760px){.beam,.lamp{left:80%;top:22%}}
-@media(prefers-reduced-motion:reduce){.beam{animation:none}}
+/* пульсар: канвас за заголовком, центр звезды справа */
+.pulsar{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.flash{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--px,80%) var(--py,30%),rgba(255,214,140,.22),transparent 55%);opacity:0}
+.hero .tags,.hero h1,.hero .lead{position:relative;z-index:1}
 .hero h1{font-family:Unbounded;font-weight:800;margin:0;line-height:.95;font-size:clamp(44px,10vw,150px);text-transform:uppercase;position:relative}
 .hero h1 span{display:block}
 .hero h1 .out{background:linear-gradient(90deg,var(--fg),var(--acc));-webkit-background-clip:text;background-clip:text;color:transparent;padding-top:.3em;margin-top:-.3em}
@@ -124,7 +121,7 @@ footer{padding:clamp(72px,10vw,140px) var(--pad) 32px;border-top:1px solid var(-
 </nav>
 
 <header class="hero" id="top">
- <div class="beam"></div><div class="lamp"></div>
+ <canvas class="pulsar" id="pulsar" aria-hidden="true"></canvas><div class="flash" id="flash"></div>
  <div class="m" style="color:var(--dim);margin-bottom:24px">[ Мультимедийная дизайн-студия · с 2015 ]</div>
  <h1><span>Маяк</span><span class="out">Вселенной</span></h1>
  <p class="lead">Мы создаём миры через сценический дизайн и многофункциональные пространства</p>
@@ -225,6 +222,69 @@ const cv=document.getElementById('stars'),cx=cv.getContext('2d');let S=[];
 function rs(){cv.width=innerWidth*devicePixelRatio;cv.height=innerHeight*devicePixelRatio;S=Array.from({length:140},()=>[Math.random()*cv.width,Math.random()*cv.height,Math.random()*1.4+.3,Math.random()*6])}
 rs();addEventListener('resize',rs);
 (function f(t){cx.clearRect(0,0,cv.width,cv.height);for(const[x,y,r,p]of S){cx.globalAlpha=.25+.35*Math.sin(t/900+p)**2;cx.fillStyle='#fff';cx.beginPath();cx.arc(x,y,r*devicePixelRatio,0,7);cx.fill()}requestAnimationFrame(f)})(0);
+
+// Пульсар — «маяк вселенной»: нейтронная звезда вращается, два луча вдоль магнитной оси
+// описывают конус вокруг оси вращения; когда луч смотрит на зрителя, звезда вспыхивает.
+(function(){
+ const cv=document.getElementById('pulsar'),fl=document.getElementById('flash');if(!cv)return;
+ const cx=cv.getContext('2d'),reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ let W,H,dpr,X,Y,R;
+ function size(){dpr=Math.min(devicePixelRatio||1,2);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*dpr;cv.height=H*dpr;
+  const narrow=W<760;X=W*(narrow?.72:.8);Y=H*(narrow?.24:.3);R=Math.min(W,H)*(narrow?.42:.48);
+  fl.style.setProperty('--px',(X/W*100)+'%');fl.style.setProperty('--py',(Y/H*100)+'%')}
+ size();addEventListener('resize',size);
+ // ось вращения слегка наклонена к зрителю, магнитная ось отклонена от неё на угол ALPHA
+ const TILT=-0.38,ALPHA=0.62,PERIOD=reduce?24:4.2;
+ const rotX=(v,a)=>[v[0],v[1]*Math.cos(a)-v[2]*Math.sin(a),v[1]*Math.sin(a)+v[2]*Math.cos(a)];
+ function mag(ph){ // магнитная ось в мировых координатах (y вверх, z к зрителю)
+  const m=[Math.sin(ALPHA)*Math.cos(ph),Math.cos(ALPHA),Math.sin(ALPHA)*Math.sin(ph)];return rotX(m,TILT)}
+ // силовые линии диполя: r = L·sin²θ в плоскостях вокруг магнитной оси
+ function fieldLine(m,az,L){const up=Math.abs(m[1])<.9?[0,1,0]:[1,0,0];
+  let u=[m[1]*up[2]-m[2]*up[1],m[2]*up[0]-m[0]*up[2],m[0]*up[1]-m[1]*up[0]];const ul=Math.hypot(...u);u=u.map(x=>x/ul);
+  const w=[m[1]*u[2]-m[2]*u[1],m[2]*u[0]-m[0]*u[2],m[0]*u[1]-m[1]*u[0]];
+  const d=u.map((x,i)=>x*Math.cos(az)+w[i]*Math.sin(az)),pts=[];
+  for(let t=.18;t<=Math.PI-.18;t+=.06){const r=L*Math.sin(t)**2;pts.push(m.map((x,i)=>(x*Math.cos(t)+d[i]*Math.sin(t))*r))}
+  return pts}
+ const stars=Array.from({length:70},()=>[Math.random(),Math.random(),Math.random()*1.2+.2]);
+ function beam(m,sgn,glow){ // луч: вытянутый конус, длина = проекция на экран
+  const dx=m[0]*sgn,dy=-m[1]*sgn,len=Math.hypot(dx,dy);if(len<.02)return;
+  const ang=Math.atan2(dy,dx),L=R*3.2*len+R*.3,toward=m[2]*sgn; // >0 — луч к зрителю
+  cx.save();cx.translate(X,Y);cx.rotate(ang);
+  for(const [wd,al] of [[.16,.10],[.07,.22],[.022,.6]]){
+   const g=cx.createLinearGradient(0,0,L,0);const a=al*(toward>0?1:.55)*(.6+glow*.8);
+   g.addColorStop(0,`rgba(255,226,170,${a})`);g.addColorStop(.35,`rgba(255,184,28,${a*.55})`);g.addColorStop(1,'rgba(255,120,60,0)');
+   cx.fillStyle=g;cx.beginPath();cx.moveTo(0,0);cx.lineTo(L,-L*wd);cx.lineTo(L,L*wd);cx.closePath();cx.fill()}
+  cx.restore()}
+ const t0=performance.now();
+ function frame(now){
+  const t=(now-t0)/1000,ph=t/PERIOD*Math.PI*2,m=mag(ph);
+  // яркость импульса: насколько луч смотрит на зрителя (ось z)
+  const glow=Math.exp(-(1-Math.abs(m[2]))*14);
+  cx.setTransform(dpr,0,0,dpr,0,0);cx.clearRect(0,0,W,H);cx.globalCompositeOperation='lighter';
+  // звёзды мерцают в такт
+  for(const [sx,sy,sr] of stars){cx.fillStyle=`rgba(255,255,255,${.12+.25*glow*sr/1.4})`;cx.fillRect(sx*W,sy*H,sr,sr)}
+  // туманность вокруг
+  let g=cx.createRadialGradient(X,Y,0,X,Y,R*1.4);g.addColorStop(0,'rgba(90,70,200,.16)');g.addColorStop(.5,'rgba(196,66,90,.05)');g.addColorStop(1,'rgba(0,0,0,0)');
+  cx.fillStyle=g;cx.beginPath();cx.arc(X,Y,R*1.4,0,7);cx.fill();
+  // силовые линии магнитного поля
+  cx.lineWidth=1;
+  for(let k=0;k<6;k++){const pts=fieldLine(m,k/6*Math.PI*2,R*(.55+.12*(k%2)));
+   cx.strokeStyle=`rgba(255,184,28,${.17+.18*glow})`;cx.beginPath();
+   pts.forEach((p,i)=>{const px=X+p[0],py=Y-p[1];i?cx.lineTo(px,py):cx.moveTo(px,py)});cx.stroke()}
+  // лучи: дальний рисуем первым
+  const order=m[2]>0?[-1,1]:[1,-1];for(const s of order)beam(m,s,glow);
+  // ядро — нейтронная звезда
+  const cr=R*.035*(1+glow*.6);
+  g=cx.createRadialGradient(X,Y,0,X,Y,cr*9);g.addColorStop(0,'rgba(255,240,210,.95)');g.addColorStop(.12,'rgba(255,200,90,.55)');g.addColorStop(.4,'rgba(255,140,60,.12)');g.addColorStop(1,'rgba(0,0,0,0)');
+  cx.fillStyle=g;cx.beginPath();cx.arc(X,Y,cr*9,0,7);cx.fill();
+  cx.fillStyle='#fff6e0';cx.beginPath();cx.arc(X,Y,cr,0,7);cx.fill();
+  // кольцо вспышки
+  if(glow>.05){cx.strokeStyle=`rgba(255,214,140,${glow*.5})`;cx.lineWidth=2;cx.beginPath();cx.arc(X,Y,cr*(3+(1-glow)*10),0,7);cx.stroke()}
+  cx.globalCompositeOperation='source-over';
+  fl.style.opacity=(glow*.9).toFixed(3);
+  requestAnimationFrame(frame)}
+ requestAnimationFrame(frame);
+})();
 </script>
 </body>
 </html>
