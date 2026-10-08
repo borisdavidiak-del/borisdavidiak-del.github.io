@@ -1,0 +1,34 @@
+name: Beacon photos
+# Скачивает фото проектов со старого сайта (beacon/img/sources.txt),
+# кадрирует их в 4:3, делает лёгкую цветокоррекцию и коммитит в beacon/img.
+on:
+  push:
+    paths: ['beacon/img/sources.txt', '.github/workflows/beacon-photos.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  photos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get -qq update && sudo apt-get -qq install -y imagemagick
+      - name: Download and process
+        run: |
+          cd beacon/img
+          while read -r slug url; do
+            [ -z "$slug" ] && continue
+            [ -f "$slug.jpg" ] && continue
+            curl -fsSL -A "Mozilla/5.0" "$url" -o "/tmp/$slug.src" || { echo "skip $slug"; continue; }
+            convert "/tmp/$slug.src[0]" -auto-orient -resize '1400x1050^' -gravity center -extent 1400x1050 \
+              -sigmoidal-contrast 3,50% -modulate 100,112 \
+              \( +clone -fill '#04050a' -colorize 100 -background none -vignette 0x220 \) -compose multiply -composite \
+              -strip -interlace Plane -quality 82 "$slug.jpg"
+            echo "ok $slug"
+          done < sources.txt
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
+          git add beacon/img/*.jpg || true
+          git diff --cached --quiet || (git commit -m "Add processed beacon project photos" && git push)
