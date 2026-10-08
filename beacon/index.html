@@ -223,65 +223,95 @@ function rs(){cv.width=innerWidth*devicePixelRatio;cv.height=innerHeight*deviceP
 rs();addEventListener('resize',rs);
 (function f(t){cx.clearRect(0,0,cv.width,cv.height);for(const[x,y,r,p]of S){cx.globalAlpha=.25+.35*Math.sin(t/900+p)**2;cx.fillStyle='#fff';cx.beginPath();cx.arc(x,y,r*devicePixelRatio,0,7);cx.fill()}requestAnimationFrame(f)})(0);
 
-// Пульсар — «маяк вселенной»: нейтронная звезда вращается, два луча вдоль магнитной оси
-// описывают конус вокруг оси вращения; когда луч смотрит на зрителя, звезда вспыхивает.
+// Пульсар — «маяк вселенной». Нейтронная звезда вращается вокруг оси s; магнитная ось m наклонена к ней,
+// поэтому два луча описывают конус. Вокруг — тор и джеты пульсарного ветра (как у Крабовидной туманности),
+// силовые линии с бегущими частицами и туманность. Когда луч смотрит на зрителя, звезда вспыхивает.
 (function(){
  const cv=document.getElementById('pulsar'),fl=document.getElementById('flash');if(!cv)return;
  const cx=cv.getContext('2d'),reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
- let W,H,dpr,X,Y,R;
+ let W,H,dpr,X,Y,R,neb;
+ const rnd=(a,b)=>a+Math.random()*(b-a);
  function size(){dpr=Math.min(devicePixelRatio||1,2);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*dpr;cv.height=H*dpr;
-  const narrow=W<760;X=W*(narrow?.72:.8);Y=H*(narrow?.24:.3);R=Math.min(W,H)*(narrow?.42:.48);
-  fl.style.setProperty('--px',(X/W*100)+'%');fl.style.setProperty('--py',(Y/H*100)+'%')}
+  const narrow=W<760;X=W*(narrow?.62:.76);Y=H*(narrow?.25:.4);R=narrow?W*.62:Math.min(H*.62,W*.36);
+  fl.style.setProperty('--px',(X/W*100)+'%');fl.style.setProperty('--py',(Y/H*100)+'%');
+  // туманность рисуем один раз в отдельный слой
+  neb=document.createElement('canvas');neb.width=W*dpr;neb.height=H*dpr;const n=neb.getContext('2d');n.scale(dpr,dpr);
+  n.filter='blur('+Math.round(R*.08)+'px)';n.globalCompositeOperation='lighter';
+  const cols=['80,60,200','160,50,140','255,140,40','40,90,200','255,90,90'];
+  for(let i=0;i<70;i++){const a=rnd(0,7),d=R*Math.pow(Math.random(),.7)*1.5,x=X+Math.cos(a)*d*1.3,y=Y+Math.sin(a)*d*.8,r=rnd(R*.08,R*.35);
+   const g=n.createRadialGradient(x,y,0,x,y,r),c=cols[i%cols.length];g.addColorStop(0,`rgba(${c},${rnd(.03,.09)})`);g.addColorStop(1,'rgba(0,0,0,0)');
+   n.fillStyle=g;n.beginPath();n.arc(x,y,r,0,7);n.fill()}
+  for(let i=0;i<260;i++){n.fillStyle=`rgba(255,${200+Math.random()*55|0},${170+Math.random()*85|0},${rnd(.15,.7)})`;n.filter='none';
+   const a=rnd(0,7),d=R*Math.pow(Math.random(),.5)*1.7;n.fillRect(X+Math.cos(a)*d*1.4,Y+Math.sin(a)*d*.9,rnd(.5,1.6),rnd(.5,1.6))}
+ }
  size();addEventListener('resize',size);
- // ось вращения слегка наклонена к зрителю, магнитная ось отклонена от неё на угол ALPHA
- const TILT=-0.38,ALPHA=0.62,PERIOD=reduce?24:4.2;
- const rotX=(v,a)=>[v[0],v[1]*Math.cos(a)-v[2]*Math.sin(a),v[1]*Math.sin(a)+v[2]*Math.cos(a)];
- function mag(ph){ // магнитная ось в мировых координатах (y вверх, z к зрителю)
-  const m=[Math.sin(ALPHA)*Math.cos(ph),Math.cos(ALPHA),Math.sin(ALPHA)*Math.sin(ph)];return rotX(m,TILT)}
- // силовые линии диполя: r = L·sin²θ в плоскостях вокруг магнитной оси
- function fieldLine(m,az,L){const up=Math.abs(m[1])<.9?[0,1,0]:[1,0,0];
-  let u=[m[1]*up[2]-m[2]*up[1],m[2]*up[0]-m[0]*up[2],m[0]*up[1]-m[1]*up[0]];const ul=Math.hypot(...u);u=u.map(x=>x/ul);
-  const w=[m[1]*u[2]-m[2]*u[1],m[2]*u[0]-m[0]*u[2],m[0]*u[1]-m[1]*u[0]];
-  const d=u.map((x,i)=>x*Math.cos(az)+w[i]*Math.sin(az)),pts=[];
-  for(let t=.18;t<=Math.PI-.18;t+=.06){const r=L*Math.sin(t)**2;pts.push(m.map((x,i)=>(x*Math.cos(t)+d[i]*Math.sin(t))*r))}
-  return pts}
- const stars=Array.from({length:70},()=>[Math.random(),Math.random(),Math.random()*1.2+.2]);
- function beam(m,sgn,glow){ // луч: вытянутый конус, длина = проекция на экран
-  const dx=m[0]*sgn,dy=-m[1]*sgn,len=Math.hypot(dx,dy);if(len<.02)return;
-  const ang=Math.atan2(dy,dx),L=R*3.2*len+R*.3,toward=m[2]*sgn; // >0 — луч к зрителю
-  cx.save();cx.translate(X,Y);cx.rotate(ang);
-  for(const [wd,al] of [[.16,.10],[.07,.22],[.022,.6]]){
-   const g=cx.createLinearGradient(0,0,L,0);const a=al*(toward>0?1:.55)*(.6+glow*.8);
-   g.addColorStop(0,`rgba(255,226,170,${a})`);g.addColorStop(.35,`rgba(255,184,28,${a*.55})`);g.addColorStop(1,'rgba(255,120,60,0)');
-   cx.fillStyle=g;cx.beginPath();cx.moveTo(0,0);cx.lineTo(L,-L*wd);cx.lineTo(L,L*wd);cx.closePath();cx.fill()}
-  cx.restore()}
- const t0=performance.now();
+ const PERIOD=reduce?30:5.2,TILT=-0.42,ROLL=0.28,ALPHA=0.58;
+ const rot=(v,ax,ay)=>{let[x,y,z]=v;let c=Math.cos(ax),s=Math.sin(ax);[y,z]=[y*c-z*s,y*s+z*c];c=Math.cos(ay);s=Math.sin(ay);[x,y]=[x*c-y*s,x*s+y*c];return[x,y,z]};
+ const W3=v=>rot(v,TILT,ROLL); // мир: ось вращения наклонена к зрителю и чуть повёрнута
+ const S=W3([0,1,0]);
+ const mag=ph=>W3([Math.sin(ALPHA)*Math.cos(ph),Math.cos(ALPHA),Math.sin(ALPHA)*Math.sin(ph)]);
+ const P=v=>[X+v[0],Y-v[1],v[2]];
+ const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]],norm=v=>{const l=Math.hypot(...v);return v.map(x=>x/l)};
+ function basis(m){const u=norm(cross(m,Math.abs(m[0])<.9?[1,0,0]:[0,0,1]));return[u,cross(m,u)]}
+ // частицы в лучах и на силовых линиях
+ const beamP=Array.from({length:reduce?60:220},()=>({t:Math.random(),s:Math.random()<.5?1:-1,a:rnd(0,7),r:Math.random()}));
+ const lineP=Array.from({length:reduce?20:70},()=>({k:Math.random()*10|0,t:Math.random(),v:rnd(.15,.35)}));
+ const torP=Array.from({length:reduce?60:180},()=>({a:rnd(0,7),r:rnd(.82,1.18),w:rnd(.15,.5),z:rnd(-.04,.04)}));
+ const stars=Array.from({length:90},()=>[Math.random(),Math.random(),Math.random()*1.3+.2,Math.random()*7]);
+ let last=performance.now();const t0=last;
  function frame(now){
-  const t=(now-t0)/1000,ph=t/PERIOD*Math.PI*2,m=mag(ph);
-  // яркость импульса: насколько луч смотрит на зрителя (ось z)
-  const glow=Math.exp(-(1-Math.abs(m[2]))*14);
-  cx.setTransform(dpr,0,0,dpr,0,0);cx.clearRect(0,0,W,H);cx.globalCompositeOperation='lighter';
-  // звёзды мерцают в такт
-  for(const [sx,sy,sr] of stars){cx.fillStyle=`rgba(255,255,255,${.12+.25*glow*sr/1.4})`;cx.fillRect(sx*W,sy*H,sr,sr)}
-  // туманность вокруг
-  let g=cx.createRadialGradient(X,Y,0,X,Y,R*1.4);g.addColorStop(0,'rgba(90,70,200,.16)');g.addColorStop(.5,'rgba(196,66,90,.05)');g.addColorStop(1,'rgba(0,0,0,0)');
-  cx.fillStyle=g;cx.beginPath();cx.arc(X,Y,R*1.4,0,7);cx.fill();
-  // силовые линии магнитного поля
-  cx.lineWidth=1;
-  for(let k=0;k<6;k++){const pts=fieldLine(m,k/6*Math.PI*2,R*(.55+.12*(k%2)));
-   cx.strokeStyle=`rgba(255,184,28,${.17+.18*glow})`;cx.beginPath();
-   pts.forEach((p,i)=>{const px=X+p[0],py=Y-p[1];i?cx.lineTo(px,py):cx.moveTo(px,py)});cx.stroke()}
-  // лучи: дальний рисуем первым
-  const order=m[2]>0?[-1,1]:[1,-1];for(const s of order)beam(m,s,glow);
-  // ядро — нейтронная звезда
-  const cr=R*.035*(1+glow*.6);
-  g=cx.createRadialGradient(X,Y,0,X,Y,cr*9);g.addColorStop(0,'rgba(255,240,210,.95)');g.addColorStop(.12,'rgba(255,200,90,.55)');g.addColorStop(.4,'rgba(255,140,60,.12)');g.addColorStop(1,'rgba(0,0,0,0)');
-  cx.fillStyle=g;cx.beginPath();cx.arc(X,Y,cr*9,0,7);cx.fill();
-  cx.fillStyle='#fff6e0';cx.beginPath();cx.arc(X,Y,cr,0,7);cx.fill();
-  // кольцо вспышки
-  if(glow>.05){cx.strokeStyle=`rgba(255,214,140,${glow*.5})`;cx.lineWidth=2;cx.beginPath();cx.arc(X,Y,cr*(3+(1-glow)*10),0,7);cx.stroke()}
+  const dt=Math.max(0,Math.min((now-last)/1000,.05));last=now;const t=(now-t0)/1000,ph=t/PERIOD*Math.PI*2,m=mag(ph),[mu,mv]=basis(m);
+  const glow=Math.exp(-(1-Math.abs(m[2]))*11),toward=m[2]>0?1:-1;
+  cx.setTransform(dpr,0,0,dpr,0,0);cx.clearRect(0,0,W,H);
+  cx.globalAlpha=.85+glow*.35;cx.drawImage(neb,0,0,W,H);cx.globalAlpha=1;
+  cx.globalCompositeOperation='lighter';
+  for(const[sx,sy,sr,sp] of stars){cx.fillStyle=`rgba(255,255,255,${.1+.25*Math.sin(t*1.3+sp)**2+.3*glow})`;cx.fillRect(sx*W,sy*H,sr,sr)}
+  // тор пульсарного ветра: кольцо в плоскости, перпендикулярной оси вращения
+  const[su,sv]=basis(S);
+  const torus=(front)=>{for(const p of torP){p.a+=dt*p.w*(reduce?.2:1);const rr=R*.62*p.r,v=su.map((x,i)=>(x*Math.cos(p.a)+sv[i]*Math.sin(p.a))*rr+S[i]*p.z*R);
+    if((v[2]>0)!==front)continue;const[px,py]=P(v),al=(.12+.25*(1-Math.abs(p.r-1)*4))*(front?1:.55)*(1+glow*.8);
+    cx.fillStyle=`rgba(255,${190+(p.r*40|0)},${120+(p.w*200|0)},${al})`;cx.beginPath();cx.arc(px,py,1.1+p.w*1.6,0,7);cx.fill()}
+   cx.lineWidth=R*.012;for(const k of[.9,1,1.1]){cx.strokeStyle=`rgba(255,170,80,${(front?.07:.04)*(1+glow)})`;cx.beginPath();
+    for(let i=0;i<=64;i++){const a=i/64*Math.PI*2,v=su.map((x,j)=>(x*Math.cos(a)+sv[j]*Math.sin(a))*R*.62*k);if((v[2]>0)!==front){cx.moveTo(...P(v).slice(0,2));continue}cx.lineTo(...P(v).slice(0,2))}cx.stroke()}};
+  torus(false);
+  // джеты вдоль оси вращения
+  for(const sg of[1,-1]){const e=P(S.map(x=>x*R*1.05*sg));const g=cx.createLinearGradient(X,Y,e[0],e[1]);
+   g.addColorStop(0,`rgba(160,170,255,${.35+.1*Math.sin(t*9+sg)})`);g.addColorStop(1,'rgba(120,80,255,0)');
+   cx.strokeStyle=g;cx.lineWidth=R*.012;cx.beginPath();cx.moveTo(X,Y);
+   for(let i=1;i<=12;i++){const q=S.map(x=>x*R*1.05*sg*i/12),w=Math.sin(t*3+i*1.3)*R*.01*i/12;const pp=P(q);cx.lineTo(pp[0]+w,pp[1])}cx.stroke()}
+  // силовые линии магнитного диполя: r = L·sin²θ
+  const lines=[];for(let k=0;k<10;k++){const az=k/10*Math.PI*2,d=mu.map((x,i)=>x*Math.cos(az)+mv[i]*Math.sin(az)),L=R*(.42+.16*(k%3)),pts=[];
+   for(let th=.22;th<=Math.PI-.22;th+=.05){const r=L*Math.sin(th)**2;pts.push(P(m.map((x,i)=>(x*Math.cos(th)+d[i]*Math.sin(th))*r)))}lines.push(pts);
+   cx.strokeStyle=`rgba(255,184,60,${.07+.1*glow})`;cx.lineWidth=1;cx.beginPath();pts.forEach((p,i)=>i?cx.lineTo(p[0],p[1]):cx.moveTo(p[0],p[1]));cx.stroke()}
+  for(const p of lineP){p.t=(p.t+dt*p.v)%1;const pts=lines[p.k],q=pts[Math.floor(p.t*(pts.length-1))];cx.fillStyle=`rgba(255,220,150,${.55*Math.sin(p.t*Math.PI)})`;cx.beginPath();cx.arc(q[0],q[1],1.4,0,7);cx.fill()}
+  // лучи: мягкий конус + поток частиц
+  const drawBeam=sg=>{const d=m.map(x=>x*sg),dx=d[0],dy=-d[1],pl=Math.hypot(dx,dy);if(pl<.01)return;const ang=Math.atan2(dy,dx),L=R*2.6*pl+R*.25,fac=d[2]>0?1:.5;
+   cx.save();cx.translate(X,Y);cx.rotate(ang);
+   for(const[wd,al,c] of[[.22,.05,'190,120,255'],[.11,.12,'255,160,60'],[.045,.32,'255,210,140'],[.012,.8,'255,250,235']]){
+    const g=cx.createLinearGradient(0,0,L,0),a=al*fac*(.55+glow*.9);g.addColorStop(0,`rgba(${c},${a})`);g.addColorStop(.5,`rgba(${c},${a*.4})`);g.addColorStop(1,`rgba(${c},0)`);
+    cx.fillStyle=g;cx.beginPath();cx.moveTo(0,-R*.01);cx.lineTo(L,-L*wd);cx.lineTo(L,L*wd);cx.lineTo(0,R*.01);cx.closePath();cx.fill()}
+   cx.restore()};
+  const order=toward>0?[-1,1]:[1,-1];order.forEach(drawBeam);
+  for(const p of beamP){p.t+=dt*(.35+p.r*.4);if(p.t>1){p.t=0;p.a=rnd(0,7);p.r=Math.random()}
+   const spread=.09*p.r,dir=m.map((x,i)=>x*p.s+(mu[i]*Math.cos(p.a)+mv[i]*Math.sin(p.a))*spread),dist=R*2.4*p.t;
+   const q=P(dir.map(x=>x*dist)),al=(1-p.t)*.7*(dir[2]>0?1:.5);cx.fillStyle=`rgba(255,${200+p.r*55|0},${140+p.r*100|0},${al})`;cx.beginPath();cx.arc(q[0],q[1],.8+1.6*(1-p.t),0,7);cx.fill()}
+  // нейтронная звезда: свечение, сфера, горячие пятна на магнитных полюсах
+  const cr=R*.055;
+  let g=cx.createRadialGradient(X,Y,0,X,Y,cr*14);g.addColorStop(0,`rgba(255,235,200,${.55+glow*.4})`);g.addColorStop(.08,'rgba(255,190,90,.35)');g.addColorStop(.3,'rgba(200,90,160,.08)');g.addColorStop(1,'rgba(0,0,0,0)');
+  cx.fillStyle=g;cx.beginPath();cx.arc(X,Y,cr*14,0,7);cx.fill();
   cx.globalCompositeOperation='source-over';
-  fl.style.opacity=(glow*.9).toFixed(3);
+  g=cx.createRadialGradient(X-cr*.35,Y-cr*.35,cr*.1,X,Y,cr);g.addColorStop(0,'#fffaf0');g.addColorStop(.6,'#ffd9a0');g.addColorStop(1,'#d9893a');
+  cx.fillStyle=g;cx.beginPath();cx.arc(X,Y,cr,0,7);cx.fill();
+  cx.globalCompositeOperation='lighter';
+  for(const sg of[1,-1]){const d=m.map(x=>x*sg);if(d[2]<0)continue;const q=P(d.map(x=>x*cr*.8));g=cx.createRadialGradient(q[0],q[1],0,q[0],q[1],cr*.7);
+   g.addColorStop(0,'rgba(255,255,255,.95)');g.addColorStop(1,'rgba(255,220,160,0)');cx.fillStyle=g;cx.beginPath();cx.arc(q[0],q[1],cr*.7,0,7);cx.fill()}
+  torus(true);
+  // вспышка: анаморфный блик и кольцо
+  if(glow>.03){cx.save();cx.translate(X,Y);cx.scale(1,.035);g=cx.createRadialGradient(0,0,0,0,0,R*1.6);g.addColorStop(0,`rgba(255,230,190,${glow*.8})`);g.addColorStop(1,'rgba(255,150,80,0)');
+   cx.fillStyle=g;cx.beginPath();cx.arc(0,0,R*1.6,0,7);cx.fill();cx.restore();
+   cx.strokeStyle=`rgba(255,214,150,${glow*.45})`;cx.lineWidth=1.5;cx.beginPath();cx.arc(X,Y,cr*(2+(1-glow)*16),0,7);cx.stroke()}
+  cx.globalCompositeOperation='source-over';
+  fl.style.opacity=(glow*.8).toFixed(3);
   requestAnimationFrame(frame)}
  requestAnimationFrame(frame);
 })();
