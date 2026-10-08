@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Южное сияние — арт-мастерская</title>
+<meta name="description" content="Арт-мастерская «Южное сияние»: свет, цвет и движение. Проекции, видеоанимация, оформление пространств.">
+<meta name="theme-color" content="#1B2337">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kurale&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="sparks" aria-hidden="true"></canvas>
+
+<header class="nav">
+  <a class="nav__logo" href="#top" aria-label="Южное сияние — наверх">
+    <canvas class="mark" data-mark="nav" width="64" height="40" aria-hidden="true"></canvas>
+    <span class="nav__name">Южное сияние</span>
+  </a>
+  <nav class="nav__links">
+    <a href="#about">О нас</a>
+    <a href="#work">Что делаем</a>
+    <a href="#play">Зажги сияние</a>
+    <a href="#contact">Контакты</a>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <canvas id="aurora" aria-hidden="true"></canvas>
+  <div class="hero__fallback" aria-hidden="true"></div>
+  <div class="hero__inner">
+    <div class="lockup">
+      <canvas class="mark mark--hero" data-mark="hero" width="360" height="220" aria-hidden="true"></canvas>
+      <h1 class="lockup__title" aria-label="Южное сияние">
+        <span class="split">Южное сияние</span>
+      </h1>
+      <p class="lockup__sub">арт-мастерская</p>
+    </div>
+    <p class="hero__lead">Ловим свет, складываем его в&nbsp;цвет и&nbsp;заставляем двигаться.</p>
+    <div class="hero__actions">
+      <a class="btn btn--glow" href="#play">Зажечь сияние</a>
+      <a class="btn btn--ghost" href="#about">Узнать больше</a>
+    </div>
+  </div>
+  <p class="hero__hint">кликните по небу&nbsp;— вспыхнет ярче</p>
+  <a class="hero__scroll" href="#about" aria-label="Прокрутить вниз"><span></span></a>
+</section>
+
+<div class="ribbon" aria-hidden="true"><canvas class="mark" data-mark="band"></canvas></div>
+
+<section class="section" id="about">
+  <h2 class="label reveal"><span>О мастерской</span></h2>
+  <div class="about">
+    <div class="about__text reveal">
+      <p class="big">Наш знак&nbsp;— стилизованное северное сияние. Он&nbsp;про энергию, свет и&nbsp;движение, и&nbsp;мы&nbsp;работаем так&nbsp;же.</p>
+      <p>«Южное сияние»&nbsp;— арт-мастерская, где свет становится материалом. Мы&nbsp;придумываем и&nbsp;собираем проекции, видеоанимацию и&nbsp;пространства, которые запоминаются с&nbsp;первого взгляда.</p>
+    </div>
+    <ul class="stats reveal">
+      <li><b data-count="2023">0</b><span>год, когда зажглось сияние</span></li>
+      <li><b>∞</b><span>оттенков между бирюзовым и&nbsp;синим</span></li>
+      <li><b data-count="100">0</b><b class="pct">%</b><span>света и&nbsp;движения</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="work">
+  <h2 class="label reveal"><span>Что мы делаем</span></h2>
+  <div class="cards">
+    <article class="card reveal">
+      <div class="card__glow"></div>
+      <div class="card__icon"><canvas class="mark" data-mark="card" data-seed="1" width="120" height="80"></canvas></div>
+      <h3>Проекции</h3>
+      <p>Выводим свет на&nbsp;фасады, мостовые и&nbsp;стены. Город становится экраном.</p>
+    </article>
+    <article class="card reveal">
+      <div class="card__glow"></div>
+      <div class="card__icon"><canvas class="mark" data-mark="card" data-seed="2" width="120" height="80"></canvas></div>
+      <h3>Видеоанимация</h3>
+      <p>Медиаконтент, в&nbsp;котором движение и&nbsp;спектр света работают на&nbsp;идею.</p>
+    </article>
+    <article class="card reveal">
+      <div class="card__glow"></div>
+      <div class="card__icon"><canvas class="mark" data-mark="card" data-seed="3" width="120" height="80"></canvas></div>
+      <h3>Пространства</h3>
+      <p>Интерьеры и&nbsp;навигация, где сияние спускается прямо со&nbsp;стен.</p>
+    </article>
+    <article class="card reveal">
+      <div class="card__glow"></div>
+      <div class="card__icon"><canvas class="mark" data-mark="card" data-seed="4" width="120" height="80"></canvas></div>
+      <h3>Арт-объекты</h3>
+      <p>Вещи, которые светятся изнутри: от&nbsp;инсталляций до&nbsp;сувениров.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section section--play" id="play">
+  <h2 class="label reveal"><span>Зажги своё сияние</span></h2>
+  <p class="play__lead reveal">Проведите по&nbsp;небу мышкой или пальцем. Каждое движение оставляет свою ленту света.</p>
+  <div class="play reveal">
+    <canvas id="playground" aria-label="Интерактивное небо: рисуйте сияние"></canvas>
+    <div class="play__ui">
+      <button class="chip is-on" data-hue="green" type="button">Бирюзовое</button>
+      <button class="chip" data-hue="blue" type="button">Синее</button>
+      <button class="chip" data-hue="mix" type="button">Переливы</button>
+      <button class="chip chip--clear" type="button" id="clearSky">Очистить небо</button>
+    </div>
+    <p class="play__empty" id="playEmpty">← проведите здесь →</p>
+  </div>
+</section>
+
+<section class="section section--contact" id="contact">
+  <canvas class="drape mark" data-mark="drape" aria-hidden="true"></canvas>
+  <div class="contact reveal">
+    <h2 class="contact__title">Давайте <em>засияем</em> вместе</h2>
+    <p>Расскажите об&nbsp;идее, а&nbsp;свет мы&nbsp;возьмём на&nbsp;себя.</p>
+    <div class="contact__links">
+      <a class="btn btn--glow" href="mailto:hello@example.com">Написать нам</a>
+      <a class="btn btn--ghost" href="#" aria-disabled="true">Telegram</a>
+    </div>
+  </div>
+  <footer class="foot">
+    <span>© <span id="year">2026</span> Южное сияние · арт-мастерская</span>
+    <span class="foot__palette" aria-hidden="true"><i style="--c:#00FB9D"></i><i style="--c:#354FE3"></i><i style="--c:#FFFFFF"></i></span>
+  </footer>
+</section>
+
+<script src="main.js"></script>
+</body>
+</html>
