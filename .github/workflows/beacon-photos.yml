@@ -20,6 +20,12 @@ jobs:
           convert -size 1x256 gradient: -rotate 90 \( xc:'#07061a' xc:'#2b2470' xc:'#c4425a' xc:'#ffb81c' xc:'#fff4d6' +append -filter Cubic -resize 256x1! \) -delete 0 /tmp/clut.png
           while read -r slug url; do
             [ -z "$slug" ] && continue
+            # yadisk:<публичная ссылка>|<путь к файлу> — фото из публичной папки Яндекс Диска
+            if [[ "$url" == yadisk:* ]]; then
+              ref="${url#yadisk:}"
+              url=$(curl -fsSL -G "https://cloud-api.yandex.net/v1/disk/public/resources/download" \
+                --data-urlencode "public_key=${ref%%|*}" --data-urlencode "path=${ref#*|}" | python3 -c 'import json,sys;print(json.load(sys.stdin)["href"])') || { echo "skip $slug"; continue; }
+            fi
             curl -fsSL -A "Mozilla/5.0" "$url" -o "/tmp/$slug.src" || { echo "skip $slug"; continue; }
             convert "/tmp/$slug.src[0]" -auto-orient -resize '1400x1050^' -gravity center -extent 1400x1050 \
               -level 0%,85%,1.35 -modulate 100,90 \
