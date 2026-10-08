@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boris Davidiak — Motion & Light Design</title>
+<meta name="description" content="Boris Davidiak. Generation, visualization and light design for stages, LED screens and motion.">
+<meta property="og:title" content="Boris Davidiak — Motion & Light Design">
+<meta property="og:image" content="assets/poster.jpg">
+<style>
+@font-face{font-family:Anton;src:url(assets/Anton-Regular.ttf);font-display:swap}
+@font-face{font-family:Bebas;src:url(assets/BebasNeue-Regular.ttf);font-display:swap}
+@font-face{font-family:SMono;src:url(assets/SpaceMono-Regular.ttf);font-display:swap}
+:root{--bg:#030303;--fg:#fff;--dim:#8a8a8a;--line:#1e1e1e;--red:#ff2d55;--pad:clamp(16px,4vw,56px)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:SMono,ui-monospace,monospace;font-size:15px;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+.scan{position:fixed;inset:0;pointer-events:none;z-index:50;
+ background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.5) 100%),
+ repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 1px,transparent 1px 4px)}
+.m{font-family:SMono,monospace;letter-spacing:.12em;text-transform:uppercase;font-size:12px}
+.red{color:var(--red)}
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;justify-content:space-between;align-items:center;padding:18px var(--pad);mix-blend-mode:difference}
+nav .logo{font-family:Anton;font-size:22px;letter-spacing:.02em;text-decoration:none}
+nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0}
+nav ul a{text-decoration:none}
+nav ul a:hover{color:var(--red)}
+@media(max-width:720px){nav ul{display:none}}
+/* hero */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:0 var(--pad);position:relative}
+.hero h1{font-family:Anton;font-weight:400;margin:0;line-height:.88;font-size:clamp(64px,17vw,300px);text-transform:uppercase}
+.hero h1 span{display:block;overflow:hidden}
+.hero h1 i{display:inline-block;font-style:normal;transform:translateY(105%);animation:up 1s cubic-bezier(.16,1,.3,1) forwards}
+.hero h1 .out i{color:transparent;-webkit-text-stroke:2px var(--fg)}
+.hero h1 span:nth-child(2) i{animation-delay:.12s}
+@keyframes up{to{transform:none}}
+.hero .tag{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:28px;opacity:0;animation:fade .8s .7s forwards}
+@keyframes fade{to{opacity:1}}
+.hero .cue{position:absolute;bottom:28px;left:var(--pad);right:var(--pad);display:flex;justify-content:space-between;color:var(--dim)}
+.blink{animation:bl 1s steps(1) infinite}@keyframes bl{50%{opacity:0}}
+.glitch{position:relative}
+.glitch.on{animation:gl .35s steps(2) 1}
+@keyframes gl{0%{text-shadow:-6px 0 var(--red),6px 0 #2df;transform:translateX(3px)}50%{text-shadow:5px 0 var(--red),-5px 0 #2df;transform:translateX(-4px) skewX(-6deg)}100%{text-shadow:none;transform:none}}
+/* ticker */
+.ticker{border-block:1px solid var(--line);overflow:hidden;white-space:nowrap;padding:14px 0}
+.ticker div{display:inline-block;font-family:Bebas;font-size:clamp(28px,4vw,48px);letter-spacing:.04em;animation:tick 28s linear infinite}
+.ticker b{color:var(--red);font-weight:400;margin:0 .6em}
+@keyframes tick{to{transform:translateX(-50%)}}
+/* sections */
+section{padding:clamp(72px,12vw,160px) var(--pad)}
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:48px}
+.head h2{font-family:Anton;font-weight:400;font-size:clamp(44px,8vw,120px);line-height:.9;margin:0;text-transform:uppercase}
+.reel{position:relative;aspect-ratio:16/9;background:#000;border:1px solid var(--line)}
+.reel video{width:100%;height:100%;display:block;object-fit:cover}
+.reel .corner{position:absolute;width:22px;height:22px;border:2px solid var(--red)}
+.c1{top:-8px;left:-8px;border-right:0!important;border-bottom:0!important}
+.c2{top:-8px;right:-8px;border-left:0!important;border-bottom:0!important}
+.c3{bottom:-8px;left:-8px;border-right:0!important;border-top:0!important}
+.c4{bottom:-8px;right:-8px;border-left:0!important;border-top:0!important}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+.card{padding:32px 28px 40px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);position:relative;overflow:hidden;min-height:340px;display:flex;flex-direction:column;transition:background .3s}
+.card:last-child{border-right:0}
+.card::before{content:"";position:absolute;inset:0;background:var(--red);transform:scaleY(0);transform-origin:bottom;transition:transform .45s cubic-bezier(.16,1,.3,1);z-index:-1}
+.card{z-index:0}
+.card:hover::before{transform:scaleY(1)}
+.card:hover{color:#000}
+.card:hover .m{color:#000}
+.card .n{color:var(--dim)}
+.card h3{font-family:Anton;font-weight:400;font-size:clamp(36px,4vw,56px);line-height:.95;margin:auto 0 16px;text-transform:uppercase}
+.card p{margin:0;max-width:34ch}
+.card .pix{display:grid;grid-template-columns:repeat(8,1fr);gap:3px;width:96px;margin-top:20px}
+.card .pix i{aspect-ratio:1;background:currentColor;opacity:.12}
+.about{display:grid;grid-template-columns:1fr 1.4fr;gap:48px}
+@media(max-width:900px){.about{grid-template-columns:1fr}}
+.about .big{font-family:Bebas;font-size:clamp(32px,4.4vw,64px);line-height:1;margin:0}
+.list{list-style:none;padding:0;margin:0}
+.list li{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:14px 0}
+.list li span:last-child{color:var(--dim)}
+footer{padding:clamp(72px,12vw,160px) var(--pad) 32px;border-top:1px solid var(--line)}
+footer .cta{font-family:Anton;font-size:clamp(48px,11vw,190px);line-height:.9;text-transform:uppercase;text-decoration:none;display:inline-block}
+footer .cta:hover{color:var(--red)}
+footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;margin-top:64px;color:var(--dim)}
+.rv{opacity:0;transform:translateY(40px);transition:opacity .9s,transform .9s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hero h1 i{transform:none}.hero .tag,.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="scan"></div>
+<nav>
+ <a class="logo" href="#top">B/D</a>
+ <ul class="m">
+  <li><a href="#reel">Showreel</a></li>
+  <li><a href="#work">Disciplines</a></li>
+  <li><a href="#about">About</a></li>
+  <li><a href="#contact">Contact</a></li>
+ </ul>
+</nav>
+
+<header class="hero" id="top">
+ <div class="m" style="color:var(--dim);margin-bottom:24px">[ Portfolio — 2026 ]</div>
+ <h1><span><i class="glitch" id="g1">Boris</i></span><span class="out"><i>Davidiak</i></span></h1>
+ <div class="tag m"><span>Generation</span><span class="red">/</span><span>Visualization</span><span class="red">/</span><span>Light Design</span></div>
+ <div class="cue m"><span>Scroll<span class="blink">_</span></span><span id="clock">00:00:00</span></div>
+</header>
+
+<div class="ticker"><div>
+ MOTION DESIGN<b>●</b>STAGE VISUALS<b>●</b>LED CONTENT<b>●</b>CREATIVE CODE<b>●</b>LIGHT DESIGN<b>●</b>IDENTITY<b>●</b>
+ MOTION DESIGN<b>●</b>STAGE VISUALS<b>●</b>LED CONTENT<b>●</b>CREATIVE CODE<b>●</b>LIGHT DESIGN<b>●</b>IDENTITY<b>●</b>
+</div></div>
+
+<section id="reel">
+ <div class="head rv"><h2>Showreel</h2><span class="m">01 — 00:30</span></div>
+ <div class="reel rv">
+  <video src="assets/showreel.mp4" poster="assets/poster.jpg" controls playsinline preload="metadata"></video>
+  <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
+ </div>
+</section>
+
+<section id="work" style="padding-top:0">
+ <div class="head rv"><h2>Disciplines</h2><span class="m">02 — 03</span></div>
+ <div class="grid rv">
+  <article class="card"><span class="m n">01</span><h3>Generation</h3><p>Generative visuals and creative code. Systems that grow their own imagery, frame by frame.</p><div class="pix"></div></article>
+  <article class="card"><span class="m n">02</span><h3>Visualization</h3><p>Stage visuals and LED content built for real screens, real venues and real audiences.</p><div class="pix"></div></article>
+  <article class="card"><span class="m n">03</span><h3>Light Design</h3><p>Light as material. Shows, installations and spaces shaped by beams, rhythm and darkness.</p><div class="pix"></div></article>
+ </div>
+</section>
+
+<section id="about" style="padding-top:0">
+ <div class="head rv"><h2>About</h2><span class="m">03</span></div>
+ <div class="about rv">
+  <p class="big">I design motion and light for stages, screens and spaces. Graphic precision, live energy.</p>
+  <ul class="list m">
+   <li><span>Motion design</span><span>Video / Titles</span></li>
+   <li><span>Stage visuals</span><span>Concerts / Events</span></li>
+   <li><span>LED content</span><span>Screens / Mapping</span></li>
+   <li><span>Creative code</span><span>Generative / Realtime</span></li>
+   <li><span>Light design</span><span>Shows / Installations</span></li>
+  </ul>
+ </div>
+</section>
+
+<footer id="contact">
+ <div class="m" style="color:var(--dim);margin-bottom:16px">Let's work together</div>
+ <a class="cta" href="mailto:hello@example.com">Get in touch<span class="red">.</span></a>
+ <div class="row m"><span>© 2026 Boris Davidiak</span><span>Generation / Visualization / Light Design</span></div>
+</footer>
+
+<script>
+// pixel blocks in cards
+document.querySelectorAll('.pix').forEach((p,k)=>{for(let i=0;i<32;i++){const e=document.createElement('i');p.appendChild(e);}
+ setInterval(()=>{p.children[Math.random()*32|0].style.opacity=Math.random()<.4?1:.12},120+k*40)});
+// reveal on scroll
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(e=>io.observe(e));
+// glitch pulses
+const g=document.getElementById('g1');
+setInterval(()=>{g.classList.remove('on');void g.offsetWidth;g.classList.add('on')},3200);
+// timecode
+const ck=document.getElementById('clock'),t0=performance.now();
+(function f(){const s=(performance.now()-t0)/1000,fr=Math.floor(s*30)%30;
+ ck.textContent=[Math.floor(s/60),Math.floor(s)%60,fr].map(v=>String(v).padStart(2,'0')).join(':');requestAnimationFrame(f)})();
+</script>
+</body>
+</html>
