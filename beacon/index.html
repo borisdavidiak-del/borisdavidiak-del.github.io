@@ -59,27 +59,44 @@ section{padding:clamp(72px,10vw,140px) var(--pad)}
 .filters button[aria-pressed=true]{color:var(--bg);background:var(--acc);border-color:var(--acc)}
 .filters button:hover{color:var(--fg)}
 .filters button[aria-pressed=true]:hover{color:var(--bg)}
-/* grid */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
-@media(max-width:380px){.grid{grid-template-columns:1fr}}
-.card{position:relative;border:1px solid var(--line);background:#07080e;overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s}
-.card:hover{border-color:var(--acc)}
-.card .ph{aspect-ratio:4/3;position:relative;overflow:hidden;background:var(--g)}
-.card .ph::after{content:attr(data-n);position:absolute;right:14px;bottom:8px;font-family:Unbounded;font-weight:800;font-size:64px;color:rgba(255,255,255,.08)}
-.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1),filter .6s}
-.card:hover img{transform:scale(1.05);filter:brightness(1.15) saturate(1.15)}
-/* фото уже тонированы при сборке (.github/workflows/beacon-photos.yml); сверху сканлайны и виньетка */
+/* grid: мозаика из крупных карточек */
+.grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:clamp(220px,21vw,400px);gap:clamp(10px,1.2vw,18px)}
+.card{position:relative;overflow:hidden;background:#07080e;text-decoration:none;isolation:isolate;border-radius:4px;grid-column:var(--c);grid-row:var(--r)}
+.grid.flat .card{grid-column:span 6;grid-row:span 2}
+.grid.flat .card.last{grid-column:span 12}
+.card .ph{position:absolute;inset:0;background:var(--g)}
+.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.16,1,.3,1),filter .6s}
+.card:hover img{transform:scale(1.06);filter:brightness(1.12) saturate(1.15)}
+/* сканлайны, виньетка и затемнение под текст */
 .card .fx{position:absolute;inset:0;z-index:2;pointer-events:none;
- background:radial-gradient(ellipse at 50% 45%,transparent 50%,rgba(4,5,10,.65) 100%),
- repeating-linear-gradient(0deg,rgba(0,0,0,.16) 0 1px,transparent 1px 3px);
+ background:linear-gradient(to top,rgba(4,5,10,.92) 0%,rgba(4,5,10,.55) 28%,transparent 58%),
+ radial-gradient(ellipse at 50% 40%,transparent 55%,rgba(4,5,10,.5) 100%),
+ repeating-linear-gradient(0deg,rgba(0,0,0,.14) 0 1px,transparent 1px 3px)}
+.card::after{content:"";position:absolute;inset:0;z-index:4;border:1px solid rgba(255,255,255,.07);border-radius:inherit;pointer-events:none;transition:border-color .4s}
+.card:hover::after{border-color:var(--acc)}
+.card .top{position:absolute;z-index:3;top:16px;left:18px;right:18px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.card .n{color:rgba(243,241,234,.7)}
+.card .cat{color:var(--acc);background:rgba(4,5,10,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,184,28,.35);padding:5px 10px;border-radius:999px;font-size:10px}
+.card .body{position:absolute;z-index:3;left:0;right:0;bottom:0;padding:clamp(16px,2vw,32px);display:flex;flex-direction:column;gap:10px}
+.card h3{font-family:Unbounded;font-weight:500;font-size:clamp(17px,1.5vw,24px);line-height:1.2;margin:0;color:var(--fg);max-width:22ch}
+.card.xl h3,.card.w h3{font-size:clamp(22px,2.6vw,44px);font-weight:800;text-transform:uppercase;max-width:18ch}
+.card.m h3{font-size:clamp(20px,2vw,32px)}
+.card p{margin:0;color:#d4d2cb;font-size:14px;max-width:52ch;max-height:0;opacity:0;overflow:hidden;transition:max-height .6s cubic-bezier(.16,1,.3,1),opacity .4s}
+.card:hover p,.card:focus-visible p{max-height:8em;opacity:1}
+.card .go{display:inline-flex;align-items:center;gap:8px;color:var(--acc);opacity:0;transform:translateX(-8px);transition:.4s}
+.card:hover .go{opacity:1;transform:none}
+.card .ph:not(.has)::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,transparent 0 38px,rgba(255,255,255,.04) 38px 39px)}
+@media(hover:none){.card p{max-height:none;opacity:1}.card .go{display:none}}
+@media(max-width:900px){
+ .grid{grid-template-columns:1fr 1fr;grid-auto-rows:auto}
+ .card,.grid.flat .card{grid-column:span 1;grid-row:auto;aspect-ratio:4/5}
+ .card.xl,.card.w{grid-column:span 2;aspect-ratio:4/3}
 }
-.card .fx::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--acc);transform:scaleX(0);transform-origin:left;transition:transform .6s cubic-bezier(.16,1,.3,1)}
-.card:hover .fx::after{transform:scaleX(1)}
-.card .ph::after{z-index:3}
-.card .body{padding:18px 18px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
-.card h3{font-family:Unbounded;font-weight:500;font-size:18px;line-height:1.25;margin:0}
-.card p{margin:0;color:#b9b8b2;font-size:14px}
-.card .cat{color:var(--acc)}
+@media(max-width:560px){
+ .grid{grid-template-columns:1fr}
+ .card,.card.xl,.card.w,.grid.flat .card{grid-column:span 1;aspect-ratio:4/5}
+ .card h3,.card.xl h3,.card.w h3,.card.m h3{font-size:20px;hyphens:auto}
+}
 .card.hide{display:none}
 /* footer */
 footer{padding:clamp(72px,10vw,140px) var(--pad) 32px;border-top:1px solid var(--line)}
@@ -176,17 +193,30 @@ const P=[
  ["gesture","ЖЕСТ","Инсталляции","Жест как древнейший и универсальный язык, меняющий значение в пространстве и культуре."]
 ];
 const grid=document.getElementById('grid');
+// раскладка мозаики блоками по две строки:
+// A: большая слева + две малые справа, B: две средние, C: две малые слева + большая справа
+const BLOCKS={A:[['xl','1/span 8',0,2],['s','9/span 4',0,1],['s','9/span 4',1,1]],
+ B:[['m','1/span 6',0,2],['m','7/span 6',0,2]],
+ C:[['s','1/span 4',0,1],['s','1/span 4',1,1],['xl','5/span 8',0,2]],
+ D:[['w','1/span 12',0,2]]};
+const SLOTS=[];let row=1;
+for(const k of 'ABCABCDDD'){for(const [size,c,dr,h] of BLOCKS[k])SLOTS.push({size,c,r:`${row+dr}/span ${h}`});row+=2}
 P.forEach(([slug,t,cat,d],i)=>{
  const h=(i*47+20)%360;
+ const slot=SLOTS[i],size=slot.size;
  const a=document.createElement('a');
- a.className='card rv';a.dataset.cat=cat;a.href='https://botu.su/'+slug;a.target='_blank';a.rel='noopener';a.style.textDecoration='none';
- a.innerHTML=`<div class="ph" data-n="${String(i+1).padStart(2,'0')}" style="--g:radial-gradient(120% 90% at 80% 10%,hsl(${h} 90% 55%/.55),transparent 60%),radial-gradient(90% 80% at 10% 100%,hsl(${(h+60)%360} 80% 40%/.45),transparent 60%),#07080e"><img src="img/${slug}.jpg" alt="${t}" loading="lazy" onload="this.parentNode.classList.add('has')" onerror="this.remove()"><span class="fx"></span></div>
- <div class="body"><span class="m cat">${cat}</span><h3>${t}</h3><p>${d}</p></div>`;
+ a.className='card rv '+size;a.dataset.cat=cat;a.style.setProperty('--c',slot.c);a.style.setProperty('--r',slot.r);a.href='https://botu.su/'+slug;a.target='_blank';a.rel='noopener';
+ a.innerHTML=`<div class="ph" style="--g:radial-gradient(120% 90% at 80% 10%,hsl(${h} 90% 55%/.5),transparent 60%),radial-gradient(90% 80% at 10% 100%,hsl(${(h+60)%360} 80% 40%/.4),transparent 60%),#07080e"><img src="img/${slug}.jpg" alt="${t}" loading="lazy" onload="this.parentNode.classList.add('has')" onerror="this.remove()"></div><span class="fx"></span>
+ <div class="top"><span class="m n">${String(i+1).padStart(2,'0')} / ${P.length}</span><span class="m cat">${cat}</span></div>
+ <div class="body"><h3>${t}</h3><p>${d}</p><span class="m go">Смотреть проект →</span></div>`;
  grid.appendChild(a);
 });
 document.querySelectorAll('.filters button').forEach(b=>b.onclick=()=>{
  document.querySelectorAll('.filters button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+ grid.classList.toggle('flat',b.dataset.f!=='all');
  grid.querySelectorAll('.card').forEach(c=>c.classList.toggle('hide',b.dataset.f!=='all'&&c.dataset.cat!==b.dataset.f));
+ const vis=[...grid.querySelectorAll('.card:not(.hide)')];grid.querySelectorAll('.card').forEach(c=>c.classList.remove('last'));
+ if(b.dataset.f!=='all'&&vis.length%2)vis[vis.length-1].classList.add('last');
 });
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
 document.querySelectorAll('.rv').forEach(e=>io.observe(e));
