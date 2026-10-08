@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Маяк Вселенной — мультимедийная дизайн-студия</title>
+<meta name="description" content="Маяк Вселенной: сценический дизайн, мультипространства и световые инсталляции.">
+<meta property="og:title" content="Маяк Вселенной — мультимедийная дизайн-студия">
+<meta property="og:description" content="Создаём миры через сценический дизайн и многофункциональные пространства.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;500;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#04050a;--fg:#f3f1ea;--dim:#8b8d98;--line:#1b1d26;--acc:#ffb81c;--pad:clamp(16px,4vw,56px)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:"JetBrains Mono",ui-monospace,monospace;font-size:15px;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+.m{letter-spacing:.12em;text-transform:uppercase;font-size:12px}
+.acc{color:var(--acc)}
+.stars{position:fixed;inset:0;z-index:-1;pointer-events:none}
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px var(--pad);background:linear-gradient(var(--bg),transparent)}
+nav .logo{font-family:Unbounded;font-weight:800;font-size:15px;text-decoration:none;letter-spacing:.04em}
+nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0}
+nav ul a{text-decoration:none}
+nav a:hover{color:var(--acc)}
+.btn{display:inline-block;border:1px solid var(--acc);color:var(--acc);padding:9px 16px;text-decoration:none;border-radius:999px;transition:.2s}
+.btn:hover{background:var(--acc);color:var(--bg)!important}
+@media(max-width:760px){nav ul{display:none}}
+/* hero */
+.hero{min-height:100svh;display:grid;align-content:center;padding:96px var(--pad) 64px;position:relative;overflow:hidden}
+.beam{position:absolute;top:28%;left:86%;width:180vmax;height:60vmax;transform-origin:0 50%;
+ background:conic-gradient(from 84deg at 0 50%,transparent 0deg,rgba(255,184,28,.16) 6deg,rgba(255,184,28,.03) 12deg,transparent 14deg);
+ animation:sweep 14s linear infinite;pointer-events:none;margin-top:-30vmax}
+.lamp{position:absolute;top:28%;left:86%;width:14px;height:14px;margin:-7px;border-radius:50%;background:var(--acc);box-shadow:0 0 30px 8px rgba(255,184,28,.6),0 0 120px 40px rgba(255,184,28,.2)}
+@keyframes sweep{to{transform:rotate(360deg)}}
+@media(max-width:760px){.beam,.lamp{left:80%;top:22%}}
+@media(prefers-reduced-motion:reduce){.beam{animation:none}}
+.hero h1{font-family:Unbounded;font-weight:800;margin:0;line-height:.95;font-size:clamp(44px,10vw,150px);text-transform:uppercase;position:relative}
+.hero h1 span{display:block}
+.hero h1 .out{background:linear-gradient(90deg,var(--fg),var(--acc));-webkit-background-clip:text;background-clip:text;color:transparent;padding-top:.3em;margin-top:-.3em}
+.hero .lead{font-family:Unbounded;font-weight:300;font-size:clamp(18px,2.4vw,28px);max-width:30ch;margin:28px 0 0;line-height:1.3}
+.tags{display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:28px;color:var(--dim)}
+/* sections */
+section{padding:clamp(72px,10vw,140px) var(--pad)}
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:40px}
+.head h2{font-family:Unbounded;font-weight:800;font-size:clamp(34px,6vw,84px);line-height:.95;margin:0;text-transform:uppercase}
+.about{display:grid;grid-template-columns:1.2fr 1fr;gap:48px}
+.about .big{font-family:Unbounded;font-weight:300;font-size:clamp(20px,2.6vw,34px);line-height:1.3;margin:0}
+.about p{margin:0 0 16px;color:#c9c8c2}
+.svc{list-style:none;padding:0;margin:0}
+.svc li{display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.svc li span:last-child{color:var(--dim)}
+@media(max-width:860px){.about{grid-template-columns:1fr}}
+/* filters */
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.filters button{font:inherit;font-size:12px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--dim);border:1px solid var(--line);padding:8px 14px;border-radius:999px;cursor:pointer}
+.filters button[aria-pressed=true]{color:var(--bg);background:var(--acc);border-color:var(--acc)}
+.filters button:hover{color:var(--fg)}
+.filters button[aria-pressed=true]:hover{color:var(--bg)}
+/* grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+@media(max-width:380px){.grid{grid-template-columns:1fr}}
+.card{position:relative;border:1px solid var(--line);background:#07080e;overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s}
+.card:hover{border-color:var(--acc)}
+.card .ph{aspect-ratio:4/3;position:relative;overflow:hidden;background:var(--g)}
+.card .ph::after{content:attr(data-n);position:absolute;right:14px;bottom:8px;font-family:Unbounded;font-weight:800;font-size:64px;color:rgba(255,255,255,.08)}
+.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.card:hover img{transform:scale(1.04)}
+.card .body{padding:18px 18px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.card h3{font-family:Unbounded;font-weight:500;font-size:18px;line-height:1.25;margin:0}
+.card p{margin:0;color:#b9b8b2;font-size:14px}
+.card .cat{color:var(--acc)}
+.card.hide{display:none}
+/* footer */
+footer{padding:clamp(72px,10vw,140px) var(--pad) 32px;border-top:1px solid var(--line)}
+.cta{font-family:Unbounded;font-weight:800;font-size:clamp(30px,6vw,84px);text-decoration:none;line-height:1;display:inline-block;text-transform:uppercase}
+.cta:hover{color:var(--acc)}
+.contacts{display:flex;flex-wrap:wrap;gap:12px 28px;margin:32px 0 56px}
+.contacts a{text-decoration:none;border-bottom:1px solid var(--line)}
+.contacts a:hover{color:var(--acc);border-color:var(--acc)}
+.row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:var(--dim)}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<canvas class="stars" id="stars"></canvas>
+<nav>
+ <a class="logo" href="#top">МАЯК<span class="acc">·</span>ВСЕЛЕННОЙ</a>
+ <ul class="m">
+  <li><a href="#about">О нас</a></li>
+  <li><a href="#projects">Проекты</a></li>
+  <li><a href="#contact">Контакты</a></li>
+ </ul>
+ <a class="btn m" href="https://t.me/beaconspace" target="_blank" rel="noopener">Связаться</a>
+</nav>
+
+<header class="hero" id="top">
+ <div class="beam"></div><div class="lamp"></div>
+ <div class="m" style="color:var(--dim);margin-bottom:24px">[ Мультимедийная дизайн-студия · с 2015 ]</div>
+ <h1><span>Маяк</span><span class="out">Вселенной</span></h1>
+ <p class="lead">Мы создаём миры через сценический дизайн и многофункциональные пространства</p>
+ <div class="tags m"><span>Мультипространства</span><span class="acc">/</span><span>Сценический дизайн</span><span class="acc">/</span><span>Инсталляции</span></div>
+</header>
+
+<section id="about">
+ <div class="head rv"><h2>О нас</h2><span class="m" style="color:var(--dim)">01</span></div>
+ <div class="about rv">
+  <div>
+   <p class="big">В 2015 году мы открыли для себя, как свет способен преобразить восприятие любого объекта и пространства.</p>
+  </div>
+  <div>
+   <p>С тех пор мы реализовали множество проектов, но наша ключевая миссия остаётся неизменной: создавать уникальные миры, в которых люди могут воплощать свои мечты.</p>
+   <ul class="svc m">
+    <li><span>Мультипространства</span><span>Фестивали / Ангары</span></li>
+    <li><span>Сценический дизайн</span><span>Шоу / Премии / Форумы</span></li>
+    <li><span>Инсталляции</span><span>Свет / Арт-объекты</span></li>
+   </ul>
+  </div>
+ </div>
+</section>
+
+<section id="projects" style="padding-top:0">
+ <div class="head rv"><h2>Проекты</h2>
+  <div class="filters" role="group" aria-label="Фильтр проектов">
+   <button aria-pressed="true" data-f="all">Все</button>
+   <button aria-pressed="false" data-f="Мультипространства">Мультипространства</button>
+   <button aria-pressed="false" data-f="Сценический дизайн">Сцены</button>
+   <button aria-pressed="false" data-f="Инсталляции">Инсталляции</button>
+  </div>
+ </div>
+ <div class="grid" id="grid"></div>
+</section>
+
+<footer id="contact">
+ <div class="m" style="color:var(--dim);margin-bottom:16px">Обсудим ваш проект</div>
+ <a class="cta" href="https://t.me/beaconspace" target="_blank" rel="noopener">Связаться<span class="acc">.</span></a>
+ <div class="contacts m">
+  <a href="mailto:botuwork@yandex.ru">botuwork@yandex.ru</a>
+  <a href="https://t.me/beaconspace" target="_blank" rel="noopener">Telegram</a>
+  <a href="https://vk.com/beaconspace" target="_blank" rel="noopener">VK</a>
+  <a href="https://instagram.com/beacon_of_the_universe" target="_blank" rel="noopener">Instagram</a>
+ </div>
+ <div class="row m"><span>© 2026 Маяк Вселенной</span><span>Мультимедийная дизайн-студия</span></div>
+</footer>
+
+<script>
+// Фото: положите файл beacon/img/<slug>.jpg, и он появится в карточке.
+const P=[
+ ["microelectronics-forum","Форум Микроэлектроники","Сценический дизайн","Острые формы и прямые линии, олицетворяющие корабль, устремлённый вперёд."],
+ ["electric-sahara-in-mriya","Electric Sahara in Mriya","Мультипространства","Безумный Макс. Мир странников и кочевников, блуждающих между мирами в поисках утраченных смыслов."],
+ ["miss-intercontinental","Мисс Интерконтиненталь","Сценический дизайн","Через простые формы сцены показать единство и при этом индивидуальность каждой участницы."],
+ ["moon-vibes","Moon Vibes","Мультипространства","Фестиваль электронной музыки в стиле сюрреализма: двери-порталы, круглый экран и диджей-медиум."],
+ ["day-dream-festival-in-mriya","Day Dream Festival in Mriya","Мультипространства","Сеанс счастливого сна наяву по случаю большого дня рождения отеля мечты."],
+ ["crazy-asia-in-mriya","Crazy Asia in Mriya","Сценический дизайн","Японский квартал, погружённый в ночную тьму и сияние неоновых вывесок."],
+ ["novemberfest","Ноябрьфест","Сценический дизайн","Фестиваль еды и вина: прозрачная сцена на фоне виноградника и неоновая эстетика."],
+ ["artbat","Artbat. Ангар аэропорта","Мультипространства","Фестиваль в аэропорту: турбина самолёта в центре превратила ангар в цельное пространство."],
+ ["microelectronics-forum-art-object","Форум Микроэлектроника 2024. Арт-объект","Инсталляции","Человек с крыльями из микросхем, пульсирующими энергией: единство гения и технологий."],
+ ["music-award-stage","Сцена для музыкальной премии","Сценический дизайн","Трансформируемая сцена с движущимися элементами и вращающимися экранами."],
+ ["new-year-ice-rink","Новогодний каток","Мультипространства","Каток-звезда с сияющим зеркальным шаром, музыкой и светом."],
+ ["medusa-cosmic-traveler","Медуза. Космический странник","Инсталляции","Инсталляция переносит в мир космических странников и невесомости."],
+ ["manzherok-stage","Манжерок. Многофункциональная сцена","Сценический дизайн","Эстетика ВК «Манжерок», панорамные виды и гибкость одной сцены."],
+ ["exhibition-pavilion-yalta","Выставочный павильон Ялта","Мультипространства","Быстровозводимый павильон для Ялты к Всемирному фестивалю молодёжи."],
+ ["helicopter-hangar-festival","Вертолётный ангар. Фестиваль","Мультипространства","Фестиваль электронной музыки, где вертолётные элементы становятся световыми."],
+ ["prosvet-event","Prosvet Event","Сценический дизайн","Первое образовательное событие в Крыму о сценическом свете: теория, практика, визуализация."],
+ ["gesture","ЖЕСТ","Инсталляции","Жест как древнейший и универсальный язык, меняющий значение в пространстве и культуре."]
+];
+const grid=document.getElementById('grid');
+P.forEach(([slug,t,cat,d],i)=>{
+ const h=(i*47+20)%360;
+ const a=document.createElement('a');
+ a.className='card rv';a.dataset.cat=cat;a.href='https://botu.su/'+slug;a.target='_blank';a.rel='noopener';a.style.textDecoration='none';
+ a.innerHTML=`<div class="ph" data-n="${String(i+1).padStart(2,'0')}" style="--g:radial-gradient(120% 90% at 80% 10%,hsl(${h} 90% 55%/.55),transparent 60%),radial-gradient(90% 80% at 10% 100%,hsl(${(h+60)%360} 80% 40%/.45),transparent 60%),#07080e"><img src="img/${slug}.jpg" alt="${t}" loading="lazy" onerror="this.remove()"></div>
+ <div class="body"><span class="m cat">${cat}</span><h3>${t}</h3><p>${d}</p></div>`;
+ grid.appendChild(a);
+});
+document.querySelectorAll('.filters button').forEach(b=>b.onclick=()=>{
+ document.querySelectorAll('.filters button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+ grid.querySelectorAll('.card').forEach(c=>c.classList.toggle('hide',b.dataset.f!=='all'&&c.dataset.cat!==b.dataset.f));
+});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll('.rv').forEach(e=>io.observe(e));
+// звёзды
+const cv=document.getElementById('stars'),cx=cv.getContext('2d');let S=[];
+function rs(){cv.width=innerWidth*devicePixelRatio;cv.height=innerHeight*devicePixelRatio;S=Array.from({length:140},()=>[Math.random()*cv.width,Math.random()*cv.height,Math.random()*1.4+.3,Math.random()*6])}
+rs();addEventListener('resize',rs);
+(function f(t){cx.clearRect(0,0,cv.width,cv.height);for(const[x,y,r,p]of S){cx.globalAlpha=.25+.35*Math.sin(t/900+p)**2;cx.fillStyle='#fff';cx.beginPath();cx.arc(x,y,r*devicePixelRatio,0,7);cx.fill()}requestAnimationFrame(f)})(0);
+</script>
+</body>
+</html>
