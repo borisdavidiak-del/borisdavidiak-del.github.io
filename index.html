@@ -73,6 +73,28 @@ section{padding:clamp(72px,12vw,160px) var(--pad)}
 .card p{margin:0;max-width:34ch}
 .card .pix{display:grid;grid-template-columns:repeat(8,1fr);gap:3px;width:96px;margin-top:20px}
 .card .pix i{aspect-ratio:1;background:currentColor;opacity:.12}
+/* spotlight disciplines */
+.spot{padding:0;height:400vh;position:relative}
+.spot-pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#020202}
+.spot-head{position:absolute;top:72px;left:var(--pad);right:var(--pad);display:flex;justify-content:space-between;z-index:5;color:var(--dim)}
+.haze{position:absolute;inset:0;pointer-events:none}
+#beams,.fixtures{position:absolute;inset:0;pointer-events:none}
+.beam{position:absolute;top:0;left:0;width:0;height:0;transform-origin:0 0;mix-blend-mode:screen}
+.beam i{position:absolute;left:-260px;top:0;width:520px;height:100%;clip-path:polygon(48.5% 0,51.5% 0,100% 100%,0 100%);filter:blur(7px);
+ background:linear-gradient(to bottom,rgba(255,255,255,.42),rgba(255,255,255,.08) 65%,rgba(255,255,255,0))}
+.beam.r i{background:linear-gradient(to bottom,rgba(255,45,85,.5),rgba(255,45,85,.08) 65%,rgba(255,45,85,0))}
+.fix{position:absolute;top:-6px;width:34px;height:20px;margin-left:-17px;background:#111;border:1px solid #2a2a2a;border-radius:0 0 6px 6px;box-shadow:0 6px 18px rgba(255,255,255,.25)}
+.fix::after{content:"";position:absolute;left:11px;bottom:-3px;width:12px;height:4px;border-radius:50%;background:#fff;box-shadow:0 0 12px 4px rgba(255,255,255,.8)}
+.track{position:absolute;top:0;left:0;height:100%;display:flex;will-change:transform}
+.word{width:100vw;flex:none;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative}
+.word::before{content:attr(data-n);position:absolute;top:calc(50% - 15vw);font-family:SMono;font-size:12px;letter-spacing:.2em;color:var(--dim)}
+.w{position:relative;font-family:Anton;text-transform:uppercase;font-size:clamp(56px,15vw,260px);line-height:1;white-space:nowrap}
+.w .dim{color:#151515}
+.w .lit{position:absolute;inset:0;color:transparent;-webkit-background-clip:text;background-clip:text;
+ background-image:radial-gradient(circle at var(--lx,50%) var(--ly,50%),#fff 0,#fff 9vw,rgba(255,255,255,.22) 26vw,rgba(255,255,255,0) 38vw)}
+.word p{margin:28px 0 0;color:var(--dim);opacity:var(--po,0);transition:opacity .4s}
+.spot-bar{position:absolute;left:var(--pad);right:var(--pad);bottom:28px;height:1px;background:#222;z-index:5}
+.spot-bar i{position:absolute;left:0;top:0;height:100%;width:0;background:var(--red)}
 .about{display:grid;grid-template-columns:1fr 1.4fr;gap:48px}
 @media(max-width:900px){.about{grid-template-columns:1fr}}
 .about .big{font-family:Bebas;font-size:clamp(32px,4.4vw,64px);line-height:1;margin:0}
@@ -120,12 +142,18 @@ footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;m
  </div>
 </section>
 
-<section id="work" style="padding-top:0">
- <div class="head rv"><h2>Disciplines</h2><span class="m">02 — 03</span></div>
- <div class="grid rv">
-  <article class="card"><span class="m n">01</span><h3>Generation</h3><p>Generative visuals and creative code. Systems that grow their own imagery, frame by frame.</p><div class="pix"></div></article>
-  <article class="card"><span class="m n">02</span><h3>Visualization</h3><p>Stage visuals and LED content built for real screens, real venues and real audiences.</p><div class="pix"></div></article>
-  <article class="card"><span class="m n">03</span><h3>Light Design</h3><p>Light as material. Shows, installations and spaces shaped by beams, rhythm and darkness.</p><div class="pix"></div></article>
+<section id="work" class="spot">
+ <div class="spot-pin">
+  <div class="spot-head"><span class="m">02 — Disciplines</span><span class="m" id="spotIdx">01 / 03</span></div>
+  <div class="haze" id="haze"></div>
+  <div id="beams"></div>
+  <div class="track" id="track">
+   <div class="word" data-n="01"><div class="w"><span class="dim">Generation</span><span class="lit">Generation</span></div><p class="m">Generative visuals / creative code</p></div>
+   <div class="word" data-n="02"><div class="w"><span class="dim">Visualization</span><span class="lit">Visualization</span></div><p class="m">Stage visuals / LED content / 3D</p></div>
+   <div class="word" data-n="03"><div class="w"><span class="dim">Light Design</span><span class="lit">Light Design</span></div><p class="m">Shows / installations / spaces</p></div>
+  </div>
+  <div class="fixtures" id="fixtures"></div>
+  <div class="spot-bar"><i id="spotBar"></i></div>
  </div>
 </section>
 
@@ -153,6 +181,50 @@ footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;m
 // pixel blocks in cards
 document.querySelectorAll('.pix').forEach((p,k)=>{for(let i=0;i<32;i++){const e=document.createElement('i');p.appendChild(e);}
  setInterval(()=>{p.children[Math.random()*32|0].style.opacity=Math.random()<.4?1:.12},120+k*40)});
+// spotlights follow the active discipline
+(function(){
+ const sec=document.getElementById('work'),pin=sec.querySelector('.spot-pin'),track=document.getElementById('track');
+ const words=[...track.querySelectorAll('.word')],bw=document.getElementById('beams'),fx=document.getElementById('fixtures');
+ const haze=document.getElementById('haze'),bar=document.getElementById('spotBar'),idx=document.getElementById('spotIdx');
+ const N=5,B=[];
+ for(let i=0;i<N;i++){const b=document.createElement('div');b.className='beam'+(i===2?' r':'');b.innerHTML='<i></i>';bw.appendChild(b);
+  const f=document.createElement('div');f.className='fix';fx.appendChild(f);B.push({b,f,a:0,len:0,ox:0,oy:0});}
+ const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ let tx=0,ty=0,cx=null,cy=null;
+ function frame(t){
+  const W=pin.clientWidth,H=pin.clientHeight,r=sec.getBoundingClientRect();
+  const p=Math.min(1,Math.max(0,-r.top/(sec.offsetHeight-H)));
+  // hold on each word, ease between them
+  const seg=p*(words.length-1),k=Math.floor(Math.min(seg,words.length-1.0001)),f=seg-k;
+  const hold=.35,e=f<hold/2?0:f>1-hold/2?1:(()=>{const x=(f-hold/2)/(1-hold);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2})();
+  const pos=k+e;track.style.transform=`translateX(${-pos*W}px)`;
+  const act=Math.round(pos);idx.textContent=`0${act+1} / 0${words.length}`;bar.style.width=(p*100)+'%';
+  // target = active word's text on screen
+  const w=words[act].querySelector('.w'),wr=w.getBoundingClientRect(),pr=pin.getBoundingClientRect();
+  tx=wr.left-pr.left+wr.width/2;ty=wr.top-pr.top+wr.height/2;
+  if(cx===null){cx=tx;cy=ty}
+  const sm=reduce?1:.12;cx+=(tx-cx)*sm;cy+=(ty-cy)*sm;
+  const s=t/1000;
+  B.forEach((o,i)=>{
+   const fxp=W*(.12+.76*i/(N-1)),fyp=-4;
+   // each head wobbles around the target, sweeping across the word
+   const wob=reduce?0:1;
+   const ax=cx+Math.sin(s*1.3+i*1.9)*wr.width*.32*wob, ay=cy+Math.sin(s*1.7+i*2.3)*wr.height*.18*wob;
+   const dx=ax-fxp,dy=ay-fyp,ang=Math.atan2(dx,dy)*180/Math.PI,len=Math.hypot(dx,dy)*1.35;
+   const fl=.8+.2*Math.sin(s*19+i*5);
+   o.b.style.cssText=`left:${fxp}px;top:${fyp}px;height:${len}px;transform:rotate(${-ang}deg);opacity:${fl}`;
+   o.b.firstChild.style.height=len+'px';o.f.style.left=fxp+'px';o.f.style.transform=`rotate(${-ang*.6}deg)`;
+   if(i===1){o.hx=ax;o.hy=ay}
+  });
+  // light the text where beams land (relative to each word)
+  words.forEach((wd,j)=>{const ww=wd.querySelector('.w'),q=ww.getBoundingClientRect(),lit=ww.querySelector('.lit');
+   lit.style.setProperty('--lx',(cx-(q.left-pr.left))+'px');lit.style.setProperty('--ly',(cy-(q.top-pr.top))+'px');
+   wd.style.setProperty('--po',j===act&&Math.abs(pos-act)<.15?1:0);});
+  haze.style.background=`radial-gradient(ellipse 45% 35% at ${cx}px ${cy}px,rgba(255,255,255,.09),transparent 70%),radial-gradient(ellipse 60% 12% at ${cx}px ${H}px,rgba(255,255,255,.06),transparent 70%)`;
+  requestAnimationFrame(frame);
+ }
+ requestAnimationFrame(frame);
+})();
 // reveal on scroll
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
 document.querySelectorAll('.rv').forEach(e=>io.observe(e));
