@@ -39,22 +39,23 @@ for slug in SLUGS:
         print("ERR", slug, e); continue
     p = P(); p.feed(raw)
     imgs = []
-    for m in re.finditer(r'(?:data-original|data-img-zoom-url|data-content-cover-bg|src|content|data-bgimgfield-url)=["\'](https?://(?:static|optim|thb)\.tildacdn\.(?:com|info)/[^"\']+)', raw):
-        u = m.group(1)
-        u = re.sub(r"https?://(?:optim|thb)\.tildacdn\.(com|info)/(tild[^/]+)/-/[^/]+(?:/[^/]+)*?/([^/]+)$", r"https://static.tildacdn.\1/\2/\3", u)
-        if re.search(r"\.(svg|ico)$|favicon|/-/resize/20x/|noroot|_icon|logo", u, re.I): continue
+    for m in re.finditer(r'https?://(?:static|optim|thb)\.tildacdn\.(?:com|info)/tild[0-9a-f-]+/[^"\'\s)]+?\.(?:jpe?g|png|webp)', raw, re.I):
+        u = m.group(0)
+        if re.search(r"favicon|_icon|logo", u, re.I): continue
         if u not in imgs: imgs.append(u)
     # og:image отдельно
     og = re.search(r'property="og:image" content="([^"]+)"', raw)
     title = re.search(r"<title>(.*?)</title>", raw, re.S)
     desc = re.search(r'name="description" content="([^"]*)"', raw)
     os.makedirs(f"/tmp/beacon-src/{slug}", exist_ok=True)
-    saved = []
+    saved, seen = [], set()
     for i, u in enumerate(imgs):
         ext = os.path.splitext(u.split("?")[0])[1].lower() or ".jpg"
         fn = f"/tmp/beacon-src/{slug}/{i:02d}{ext}"
         try:
-            open(fn, "wb").write(get(u)); saved.append({"url": u, "file": fn})
+            data = get(u); h = hash(data)
+            if h in seen: continue
+            seen.add(h); open(fn, "wb").write(data); saved.append({"url": u, "file": fn})
         except Exception as e:
             print("img ERR", u, e)
     json.dump({"slug": slug, "title": html.unescape(title.group(1).strip()) if title else "",
